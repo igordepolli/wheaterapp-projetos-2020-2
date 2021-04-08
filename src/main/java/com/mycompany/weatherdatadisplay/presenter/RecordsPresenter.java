@@ -7,12 +7,20 @@ import java.util.List;
 
 public class RecordsPresenter implements IObserver {
 
+    private static RecordsPresenter instance = null;
     private RecordsView view;
 
-    public RecordsPresenter() {
+    private RecordsPresenter() {
         view = new RecordsView();
         view.setLocation(440, 320);
         view.setVisible(true);
+    }
+    
+    public static RecordsPresenter getInstance() {
+        if (instance == null) {
+            instance = new RecordsPresenter();
+        }
+        return instance;
     }
     
     @Override

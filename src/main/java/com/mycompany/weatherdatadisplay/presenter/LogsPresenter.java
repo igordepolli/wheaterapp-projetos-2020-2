@@ -4,11 +4,19 @@ import com.mycompany.weatherdatadisplay.view.LogsView;
 
 public class LogsPresenter {
 
+    private static LogsPresenter instance = null;
     private final LogsView view;
 
-    public LogsPresenter() {
+    private LogsPresenter() {
         view = new LogsView();
         view.setVisible(true);
+    }
+    
+    public static LogsPresenter getInstance() {
+        if (instance == null) {
+            instance = new LogsPresenter();
+        }
+        return instance;
     }
     
     public LogsView getView() {

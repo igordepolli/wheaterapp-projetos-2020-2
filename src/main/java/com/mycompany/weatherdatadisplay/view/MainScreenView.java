@@ -36,11 +36,6 @@ public class MainScreenView extends javax.swing.JInternalFrame {
         setTitle("Weather");
 
         mnConfigure.setText("Configurar");
-        mnConfigure.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnConfigureActionPerformed(evt);
-            }
-        });
         jMenuBar1.add(mnConfigure);
 
         setJMenuBar(jMenuBar1);
@@ -58,10 +53,6 @@ public class MainScreenView extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void mnConfigureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnConfigureActionPerformed
-        LogsPresenter presenter = new LogsPresenter();
-    }//GEN-LAST:event_mnConfigureActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

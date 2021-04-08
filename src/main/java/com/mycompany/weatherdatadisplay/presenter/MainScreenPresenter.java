@@ -30,9 +30,9 @@ public class MainScreenPresenter {
     
     private void fillInternalsFrames() {
         WeatherDataInputPresenter display_1 = WeatherDataInputPresenter.getInstance();
-        AverageDataPresenter display_2 = new AverageDataPresenter();
-        LastWeatherDatePresenter display_3 = new LastWeatherDatePresenter();
-        RecordsPresenter display_4 = new RecordsPresenter();
+        AverageDataPresenter display_2 = AverageDataPresenter.getInstance();
+        LastWeatherDatePresenter display_3 = LastWeatherDatePresenter.getInstance();
+        RecordsPresenter display_4 = RecordsPresenter.getInstance();
         internalsFrames.addAll(Arrays.asList(display_1.getView(), display_2.getView(), display_3.getView(), display_4.getView()));
     }
     

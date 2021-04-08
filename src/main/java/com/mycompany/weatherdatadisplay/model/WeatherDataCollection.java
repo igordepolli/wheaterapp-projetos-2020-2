@@ -50,5 +50,13 @@ public class WeatherDataCollection implements ISubject {
             observer.update(Collections.unmodifiableList(weathers));
         });
     }
+
+    public ArrayList<IObserver> getObservers() {
+        return observers;
+    }
+
+    public ArrayList<WeatherData> getWeathers() {
+        return weathers;
+    }
     
 }

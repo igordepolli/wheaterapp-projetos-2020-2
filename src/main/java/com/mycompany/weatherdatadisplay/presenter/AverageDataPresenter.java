@@ -7,12 +7,20 @@ import java.util.List;
 
 public class AverageDataPresenter implements IObserver {
 
+    private static AverageDataPresenter instance = null;
     private final AverageDataView view;
 
-    public AverageDataPresenter() {
+    private AverageDataPresenter() {
         view = new AverageDataView();
         view.setLocation(440, 20);
         view.setVisible(true);
+    }
+    
+    public static AverageDataPresenter getInstance() {
+        if (instance == null) {
+            instance = new AverageDataPresenter();
+        }
+        return instance;
     }
     
     @Override
