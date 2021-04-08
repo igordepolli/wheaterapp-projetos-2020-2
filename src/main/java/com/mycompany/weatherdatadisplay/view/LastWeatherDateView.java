@@ -5,6 +5,8 @@
  */
 package com.mycompany.weatherdatadisplay.view;
 
+import javax.swing.JLabel;
+
 /**
  *
  * @author igor
@@ -119,4 +121,21 @@ public class LastWeatherDateView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lbPressureLastUpdate;
     private javax.swing.JLabel lbTemperatureLastUpdate;
     // End of variables declaration//GEN-END:variables
+
+    public JLabel getLbDateLastUpdate() {
+        return lbDateLastUpdate;
+    }
+
+    public JLabel getLbHumidityLastUpdate() {
+        return lbHumidityLastUpdate;
+    }
+
+    public JLabel getLbPressureLastUpdate() {
+        return lbPressureLastUpdate;
+    }
+
+    public JLabel getLbTemperatureLastUpdate() {
+        return lbTemperatureLastUpdate;
+    }
+    
 }

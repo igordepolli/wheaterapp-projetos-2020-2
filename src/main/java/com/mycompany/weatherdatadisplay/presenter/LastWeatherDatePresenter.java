@@ -2,6 +2,7 @@ package com.mycompany.weatherdatadisplay.presenter;
 
 import com.mycompany.weatherdatadisplay.model.IObserver;
 import com.mycompany.weatherdatadisplay.model.WeatherData;
+import com.mycompany.weatherdatadisplay.utils.DateManipulation;
 import com.mycompany.weatherdatadisplay.view.LastWeatherDateView;
 import java.util.List;
 
@@ -25,7 +26,10 @@ public class LastWeatherDatePresenter implements IObserver {
      
     @Override
     public void update(List<WeatherData> weathers) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        view.getLbDateLastUpdate().setText(DateManipulation.dateToString(weathers.get(weathers.size() - 1).getDate()));
+        view.getLbHumidityLastUpdate().setText(weathers.get(weathers.size() - 1).getHumidity().toString());
+        view.getLbPressureLastUpdate().setText(weathers.get(weathers.size() - 1).getPressure().toString());
+        view.getLbTemperatureLastUpdate().setText(weathers.get(weathers.size() - 1).getTemperature().toString());;
     }
 
     public LastWeatherDateView getView() {
