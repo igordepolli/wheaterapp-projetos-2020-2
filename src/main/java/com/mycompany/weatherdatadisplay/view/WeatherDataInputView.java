@@ -5,16 +5,19 @@
  */
 package com.mycompany.weatherdatadisplay.view;
 
+import javax.swing.JButton;
+import javax.swing.JTextField;
+
 /**
  *
  * @author igor
  */
-public class WeatherDateInput extends javax.swing.JInternalFrame {
+public class WeatherDataInputView extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form WeatherDateInput
      */
-    public WeatherDateInput() {
+    public WeatherDataInputView() {
         initComponents();
     }
 
@@ -116,4 +119,25 @@ public class WeatherDateInput extends javax.swing.JInternalFrame {
     private javax.swing.JTextField tfPressure;
     private javax.swing.JTextField tfTemperature;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getBtInclude() {
+        return btInclude;
+    }
+
+    public JTextField getTfDate() {
+        return tfDate;
+    }
+
+    public JTextField getTfHumidity() {
+        return tfHumidity;
+    }
+
+    public JTextField getTfPressure() {
+        return tfPressure;
+    }
+
+    public JTextField getTfTemperature() {
+        return tfTemperature;
+    }
+
 }

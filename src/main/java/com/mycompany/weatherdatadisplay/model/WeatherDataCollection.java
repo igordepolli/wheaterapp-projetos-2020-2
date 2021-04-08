@@ -5,12 +5,20 @@ import java.util.Collections;
 
 public class WeatherDataCollection implements ISubject {
 
+    private static WeatherDataCollection instance = null;
     private final ArrayList<IObserver> observers;
     private final ArrayList<WeatherData> weathers;
     
-    public WeatherDataCollection() {
+    private WeatherDataCollection() {
         observers = new ArrayList<>();
         weathers = new ArrayList<>();
+    }
+    
+    public static WeatherDataCollection getInstance() {
+        if (instance == null) {
+            instance = new WeatherDataCollection();
+        }
+        return instance;
     }
     
     public void addWeatherData(WeatherData weatherData) {

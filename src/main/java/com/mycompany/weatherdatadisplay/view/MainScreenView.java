@@ -5,6 +5,9 @@
  */
 package com.mycompany.weatherdatadisplay.view;
 
+import com.mycompany.weatherdatadisplay.presenter.LogsPresenter;
+import javax.swing.JMenu;
+
 /**
  *
  * @author igor
@@ -12,7 +15,7 @@ package com.mycompany.weatherdatadisplay.view;
 public class MainScreenView extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form MainScreen
+     * Creates new form MainScreenView
      */
     public MainScreenView() {
         initComponents();
@@ -27,18 +30,18 @@ public class MainScreenView extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        mnConfigure = new javax.swing.JMenu();
 
-        jRadioButtonMenuItem1.setSelected(true);
-        jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
+        setTitle("Weather");
 
-        setTitle("Weather Data Display");
-        setToolTipText("");
-
-        jMenu1.setText("Configurar");
-        jMenuBar1.add(jMenu1);
+        mnConfigure.setText("Configurar");
+        mnConfigure.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnConfigureActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(mnConfigure);
 
         setJMenuBar(jMenuBar1);
 
@@ -46,20 +49,28 @@ public class MainScreenView extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1091, Short.MAX_VALUE)
+            .addGap(0, 945, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 563, Short.MAX_VALUE)
+            .addGap(0, 553, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void mnConfigureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnConfigureActionPerformed
+        LogsPresenter presenter = new LogsPresenter();
+    }//GEN-LAST:event_mnConfigureActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
+    private javax.swing.JMenu mnConfigure;
     // End of variables declaration//GEN-END:variables
+
+    public JMenu getMnConfigure() {
+        return mnConfigure;
+    }
+ 
 }
