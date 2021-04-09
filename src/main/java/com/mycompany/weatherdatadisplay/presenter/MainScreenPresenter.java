@@ -2,6 +2,8 @@ package com.mycompany.weatherdatadisplay.presenter;
 
 import com.mycompany.weatherdatadisplay.model.WeatherDataCollection;
 import com.mycompany.weatherdatadisplay.view.MainScreenView;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -21,6 +23,17 @@ public class MainScreenPresenter {
         registerAllObservers();
         fillInternalsFrames();
         openViews();
+        initListeners();
+    }
+    
+    private void initListeners() {
+        view.getMiGenerateLog().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                LogsPresenter display_5 = LogsPresenter.getInstance();
+                view.add(display_5.getView());
+            }
+        });
     }
 
     private void openViews() {

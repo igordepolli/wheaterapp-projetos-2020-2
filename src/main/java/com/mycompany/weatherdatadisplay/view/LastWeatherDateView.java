@@ -37,7 +37,6 @@ public class LastWeatherDateView extends javax.swing.JInternalFrame {
         lbTemperatureLastUpdate = new javax.swing.JLabel();
         lbHumidityLastUpdate = new javax.swing.JLabel();
         lbPressureLastUpdate = new javax.swing.JLabel();
-        btCloseLastUpdate = new javax.swing.JButton();
 
         setTitle("Última atualização de tempo");
 
@@ -57,8 +56,6 @@ public class LastWeatherDateView extends javax.swing.JInternalFrame {
 
         lbPressureLastUpdate.setText("PRESSÃO");
 
-        btCloseLastUpdate.setText("Fechar");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -77,10 +74,6 @@ public class LastWeatherDateView extends javax.swing.JInternalFrame {
                     .addComponent(lbHumidityLastUpdate)
                     .addComponent(lbPressureLastUpdate))
                 .addGap(55, 55, 55))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btCloseLastUpdate)
-                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,9 +94,7 @@ public class LastWeatherDateView extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(lbPressureLastUpdate))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btCloseLastUpdate)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         pack();
@@ -111,7 +102,6 @@ public class LastWeatherDateView extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btCloseLastUpdate;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

@@ -5,6 +5,9 @@
  */
 package com.mycompany.weatherdatadisplay.view;
 
+import javax.swing.JButton;
+import javax.swing.JTable;
+
 /**
  *
  * @author igor
@@ -30,7 +33,6 @@ public class RecordsView extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbRecords = new javax.swing.JTable();
         btRemoveRecords = new javax.swing.JButton();
-        btCloseRecords = new javax.swing.JButton();
 
         setTitle("Registros");
 
@@ -49,22 +51,17 @@ public class RecordsView extends javax.swing.JInternalFrame {
 
         btRemoveRecords.setText("Remover");
 
-        btCloseRecords.setText("Fechar");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btRemoveRecords)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btCloseRecords)
-                .addGap(14, 14, 14))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btRemoveRecords)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -72,10 +69,8 @@ public class RecordsView extends javax.swing.JInternalFrame {
                 .addGap(23, 23, 23)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btCloseRecords)
-                    .addComponent(btRemoveRecords))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(btRemoveRecords)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
@@ -83,9 +78,16 @@ public class RecordsView extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btCloseRecords;
     private javax.swing.JButton btRemoveRecords;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbRecords;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getBtRemoveRecords() {
+        return btRemoveRecords;
+    }
+
+    public JTable getTbRecords() {
+        return tbRecords;
+    }
 }

@@ -9,6 +9,7 @@ public class LogsPresenter {
 
     private LogsPresenter() {
         view = new LogsView();
+        view.setLocation(950, 20);
         view.setVisible(true);
     }
     

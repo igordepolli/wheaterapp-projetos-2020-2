@@ -5,6 +5,10 @@
  */
 package com.mycompany.weatherdatadisplay.view;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+
 /**
  *
  * @author igor
@@ -27,8 +31,8 @@ public class AverageDataView extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel9 = new javax.swing.JLabel();
         cbCourse = new javax.swing.JComboBox<>();
+        jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         lbTemperature = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -37,14 +41,12 @@ public class AverageDataView extends javax.swing.JInternalFrame {
         lbPressure = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         lbNumberOfRecords = new javax.swing.JLabel();
-        btClose = new javax.swing.JButton();
 
         setTitle("Dados medios");
 
-        jLabel9.setText("Período");
+        cbCourse.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        cbCourse.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Diário", "Semanal", "Mensal" }));
-        cbCourse.setSelectedIndex(-1);
+        jLabel9.setText("Período");
 
         jLabel10.setText("Temperatura");
 
@@ -62,8 +64,6 @@ public class AverageDataView extends javax.swing.JInternalFrame {
 
         lbNumberOfRecords.setText("NRO REGISTROS");
 
-        btClose.setText("Fechar");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -71,34 +71,32 @@ public class AverageDataView extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 239, Short.MAX_VALUE)
-                        .addComponent(btClose)
-                        .addGap(92, 92, 92))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lbNumberOfRecords)
-                        .addGap(80, 80, 80))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10)
                             .addComponent(jLabel9)
                             .addComponent(jLabel11)
                             .addComponent(jLabel12))
-                        .addGap(109, 109, 109)
+                        .addGap(100, 100, 100)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbHumidity)
-                            .addComponent(lbPressure)
-                            .addComponent(lbTemperature)
-                            .addComponent(cbCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbHumidity)
+                                    .addComponent(lbPressure)
+                                    .addComponent(lbTemperature))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE))
+                            .addComponent(cbCourse, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jLabel13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lbNumberOfRecords)))
+                .addGap(80, 80, 80))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel9)
                     .addComponent(cbCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -117,9 +115,7 @@ public class AverageDataView extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(lbNumberOfRecords, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(45, 45, 45)
-                .addComponent(btClose)
-                .addGap(40, 40, 40))
+                .addGap(125, 125, 125))
         );
 
         pack();
@@ -127,7 +123,6 @@ public class AverageDataView extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btClose;
     private javax.swing.JComboBox<String> cbCourse;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -139,4 +134,24 @@ public class AverageDataView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lbPressure;
     private javax.swing.JLabel lbTemperature;
     // End of variables declaration//GEN-END:variables
+
+    public JComboBox<String> getCbCourse() {
+        return cbCourse;
+    }
+
+    public JLabel getLbHumidity() {
+        return lbHumidity;
+    }
+
+    public JLabel getLbNumberOfRecords() {
+        return lbNumberOfRecords;
+    }
+
+    public JLabel getLbPressure() {
+        return lbPressure;
+    }
+
+    public JLabel getLbTemperature() {
+        return lbTemperature;
+    }
 }

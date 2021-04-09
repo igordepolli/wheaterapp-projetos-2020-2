@@ -6,6 +6,7 @@
 package com.mycompany.weatherdatadisplay.view;
 
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
 import javax.swing.JTextField;
 
 /**
@@ -31,7 +32,6 @@ public class WeatherDataInputView extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        tfDate = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         tfTemperature = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -39,12 +39,12 @@ public class WeatherDataInputView extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         tfPressure = new javax.swing.JTextField();
         btInclude = new javax.swing.JButton();
+        btCancel = new javax.swing.JButton();
+        tfDate = new javax.swing.JFormattedTextField();
 
         setTitle("Dados do tempo");
 
         jLabel1.setText("Data");
-
-        tfDate.setToolTipText("example");
 
         jLabel2.setText("Temperatura");
 
@@ -56,6 +56,14 @@ public class WeatherDataInputView extends javax.swing.JInternalFrame {
 
         btInclude.setText("Incluir");
 
+        btCancel.setText("Cancelar");
+
+        try {
+            tfDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -64,6 +72,8 @@ public class WeatherDataInputView extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btCancel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btInclude))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -75,18 +85,18 @@ public class WeatherDataInputView extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(tfTemperature)
-                            .addComponent(tfDate)
                             .addComponent(tfHumidity, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
-                            .addComponent(tfPressure, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE))))
+                            .addComponent(tfPressure, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                            .addComponent(tfDate))))
                 .addGap(14, 14, 14))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                .addGap(15, 15, 15)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
+                    .addComponent(tfDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfTemperature, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -100,8 +110,10 @@ public class WeatherDataInputView extends javax.swing.JInternalFrame {
                     .addComponent(tfPressure, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
-                .addComponent(btInclude)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btInclude)
+                    .addComponent(btCancel))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
@@ -109,12 +121,13 @@ public class WeatherDataInputView extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btCancel;
     private javax.swing.JButton btInclude;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField tfDate;
+    private javax.swing.JFormattedTextField tfDate;
     private javax.swing.JTextField tfHumidity;
     private javax.swing.JTextField tfPressure;
     private javax.swing.JTextField tfTemperature;
@@ -124,7 +137,11 @@ public class WeatherDataInputView extends javax.swing.JInternalFrame {
         return btInclude;
     }
 
-    public JTextField getTfDate() {
+    public JButton getBtCancel() {
+        return btCancel;
+    }
+    
+    public JFormattedTextField getTfDate() {
         return tfDate;
     }
 

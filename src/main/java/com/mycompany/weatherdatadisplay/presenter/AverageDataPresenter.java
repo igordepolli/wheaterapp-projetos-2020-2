@@ -25,7 +25,7 @@ public class AverageDataPresenter implements IObserver {
     
     @Override
     public void update(List<WeatherData> weathers) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
     
     public AverageDataView getView() {

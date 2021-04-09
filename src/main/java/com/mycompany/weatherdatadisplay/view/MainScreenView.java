@@ -7,6 +7,7 @@ package com.mycompany.weatherdatadisplay.view;
 
 import com.mycompany.weatherdatadisplay.presenter.LogsPresenter;
 import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
 /**
  *
@@ -32,10 +33,15 @@ public class MainScreenView extends javax.swing.JInternalFrame {
 
         jMenuBar1 = new javax.swing.JMenuBar();
         mnConfigure = new javax.swing.JMenu();
+        miGenerateLog = new javax.swing.JMenuItem();
 
         setTitle("Weather");
 
         mnConfigure.setText("Configurar");
+
+        miGenerateLog.setText("Gerar Log");
+        mnConfigure.add(miGenerateLog);
+
         jMenuBar1.add(mnConfigure);
 
         setJMenuBar(jMenuBar1);
@@ -57,11 +63,16 @@ public class MainScreenView extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem miGenerateLog;
     private javax.swing.JMenu mnConfigure;
     // End of variables declaration//GEN-END:variables
 
     public JMenu getMnConfigure() {
         return mnConfigure;
+    }
+
+    public JMenuItem getMiGenerateLog() {
+        return miGenerateLog;
     }
  
 }

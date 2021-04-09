@@ -8,6 +8,13 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Configurar"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="miGenerateLog">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Gerar Log"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
         </Menu>
       </SubComponents>
     </Menu>

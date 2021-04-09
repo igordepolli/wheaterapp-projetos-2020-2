@@ -16,9 +16,9 @@ public class Application {
         mainScreenPresenter.getView().setVisible(true);
         
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLocationRelativeTo(frame.getParent());
         frame.add(desktopPane, BorderLayout.CENTER);
         frame.setSize(1400, 600);
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 }

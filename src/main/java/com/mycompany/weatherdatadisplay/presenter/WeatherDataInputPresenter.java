@@ -4,6 +4,7 @@ import com.mycompany.weatherdatadisplay.model.WeatherData;
 import com.mycompany.weatherdatadisplay.model.WeatherDataCollection;
 import com.mycompany.weatherdatadisplay.utils.DateManipulation;
 import com.mycompany.weatherdatadisplay.view.WeatherDataInputView;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
@@ -30,6 +31,13 @@ public class WeatherDataInputPresenter {
                 } finally {
                     cleanFields();
                 }
+            }
+        });
+        
+        view.getBtCancel().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cleanFields();
             }
         });
     }
