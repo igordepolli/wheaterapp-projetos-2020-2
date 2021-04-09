@@ -11,11 +11,12 @@ import javax.swing.JInternalFrame;
 
 public class MainScreenPresenter {
 
+    private static MainScreenPresenter instance = null;
     private final MainScreenView view;
     private final List<JInternalFrame> internalsFrames;
     private final WeatherDataCollection collectionWeatherData;
 
-    public MainScreenPresenter() {
+    private MainScreenPresenter() {
         view = new MainScreenView();
         collectionWeatherData = WeatherDataCollection.getInstance();
         internalsFrames = new ArrayList<>();
@@ -25,7 +26,14 @@ public class MainScreenPresenter {
         openViews();
         initListeners();
     }
-    
+
+    public static MainScreenPresenter getInstance() {
+        if (instance == null) {
+            instance = new MainScreenPresenter();
+        }
+        return instance;
+    }
+
     private void initListeners() {
         view.getMiGenerateLog().addActionListener(new ActionListener() {
             @Override
@@ -47,7 +55,7 @@ public class MainScreenPresenter {
         AverageDataPresenter display_2 = AverageDataPresenter.getInstance();
         LastWeatherDatePresenter display_3 = LastWeatherDatePresenter.getInstance();
         RecordsPresenter display_4 = RecordsPresenter.getInstance();
-        
+
         internalsFrames.addAll(Arrays.asList(display_1.getView(), display_2.getView(), display_3.getView(), display_4.getView()));
     }
 
@@ -55,7 +63,7 @@ public class MainScreenPresenter {
         AverageDataPresenter observer_1 = AverageDataPresenter.getInstance();
         LastWeatherDatePresenter observer_2 = LastWeatherDatePresenter.getInstance();
         RecordsPresenter observer_3 = RecordsPresenter.getInstance();
-        
+
         collectionWeatherData.registerObserver(observer_1);
         collectionWeatherData.registerObserver(observer_2);
         collectionWeatherData.registerObserver(observer_3);

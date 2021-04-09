@@ -140,7 +140,7 @@ public class WeatherDataInputView extends javax.swing.JInternalFrame {
     public JButton getBtCancel() {
         return btCancel;
     }
-    
+
     public JFormattedTextField getTfDate() {
         return tfDate;
     }

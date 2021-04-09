@@ -74,5 +74,5 @@ public class MainScreenView extends javax.swing.JInternalFrame {
     public JMenuItem getMiGenerateLog() {
         return miGenerateLog;
     }
- 
+
 }

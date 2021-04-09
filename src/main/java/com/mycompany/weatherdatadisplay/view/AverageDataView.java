@@ -44,7 +44,7 @@ public class AverageDataView extends javax.swing.JInternalFrame {
 
         setTitle("Dados medios");
 
-        cbCourse.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbCourse.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Diária", "Semanal", "Mensal" }));
 
         jLabel9.setText("Período");
 
@@ -77,20 +77,23 @@ public class AverageDataView extends javax.swing.JInternalFrame {
                             .addComponent(jLabel9)
                             .addComponent(jLabel11)
                             .addComponent(jLabel12))
-                        .addGap(100, 100, 100)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(100, 100, 100)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lbHumidity)
                                     .addComponent(lbPressure)
-                                    .addComponent(lbTemperature))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE))
-                            .addComponent(cbCourse, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(lbTemperature)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lbNumberOfRecords)
+                                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cbCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(jLabel13)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lbNumberOfRecords)))
-                .addGap(80, 80, 80))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(73, 73, 73))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

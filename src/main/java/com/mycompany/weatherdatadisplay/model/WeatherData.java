@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.Objects;
 
 public class WeatherData {
-    
+
     private Date date;
     private Double temperature;
     private Double humidity;
@@ -13,6 +13,13 @@ public class WeatherData {
     public WeatherData() {
     }
 
+    public WeatherData(Date date, Double temperature, Double humidity, Double pressure) {
+        this.date = date;
+        this.temperature = temperature;
+        this.humidity = humidity;
+        this.pressure = pressure;
+    }
+    
     public Date getDate() {
         return date;
     }
@@ -46,9 +53,8 @@ public class WeatherData {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 3;
-        return hash;
+    public String toString() {
+        return "WeatherData{" + "date=" + date + ", temperature=" + temperature + ", humidity=" + humidity + ", pressure=" + pressure + '}';
     }
 
     @Override
@@ -77,5 +83,5 @@ public class WeatherData {
         }
         return true;
     }
-    
+
 }

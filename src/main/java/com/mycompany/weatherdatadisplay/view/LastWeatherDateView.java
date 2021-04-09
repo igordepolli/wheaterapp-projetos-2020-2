@@ -127,5 +127,5 @@ public class LastWeatherDateView extends javax.swing.JInternalFrame {
     public JLabel getLbTemperatureLastUpdate() {
         return lbTemperatureLastUpdate;
     }
-    
+
 }

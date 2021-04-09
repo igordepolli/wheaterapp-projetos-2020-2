@@ -11,17 +11,22 @@ public class LogsPresenter {
         view = new LogsView();
         view.setLocation(950, 20);
         view.setVisible(true);
+        initListeners();
     }
-    
+
     public static LogsPresenter getInstance() {
         if (instance == null) {
             instance = new LogsPresenter();
         }
         return instance;
     }
-    
+
+    private void initListeners() {
+
+    }
+
     public LogsView getView() {
         return view;
     }
-    
+
 }
