@@ -23,7 +23,7 @@ public class RecordsPresenter implements IObserver {
     private RecordsPresenter() {
         view = new RecordsView();
         collectionWeatherData = WeatherDataCollection.getInstance();
-        view.setLocation(440, 320);
+        view.setLocation(440, 260);
         view.setVisible(true);
         constructTableModel();
         initListeners();

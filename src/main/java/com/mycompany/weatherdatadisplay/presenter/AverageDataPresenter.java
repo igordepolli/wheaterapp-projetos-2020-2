@@ -51,6 +51,9 @@ public class AverageDataPresenter implements IObserver {
     @Override
     public void update(List<WeatherData> weathers) {
         view.getLbTemperature().setText(selectedItem.getAverageTemperature().toString());
+        view.getLbHumidity().setText(selectedItem.getAverageHumidity().toString());
+        view.getLbPressure().setText(selectedItem.getAveragePressure().toString());
+        view.getLbNumberOfRecords().setText(String.valueOf((weathers.size())));
     }
 
     public AverageDataView getView() {

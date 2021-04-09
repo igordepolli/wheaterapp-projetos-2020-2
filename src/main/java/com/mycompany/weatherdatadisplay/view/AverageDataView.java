@@ -84,16 +84,15 @@ public class AverageDataView extends javax.swing.JInternalFrame {
                                     .addComponent(lbHumidity)
                                     .addComponent(lbPressure)
                                     .addComponent(lbTemperature)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lbNumberOfRecords)
-                                        .addGap(0, 0, Short.MAX_VALUE))))
+                                    .addComponent(lbNumberOfRecords))
+                                .addGap(0, 73, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cbCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(cbCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(41, 41, 41))))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(jLabel13)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(73, 73, 73))
+                        .addGap(0, 228, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,7 +117,7 @@ public class AverageDataView extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(lbNumberOfRecords, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(125, 125, 125))
+                .addContainerGap())
         );
 
         pack();
