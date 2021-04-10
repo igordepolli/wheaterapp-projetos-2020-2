@@ -33,10 +33,10 @@ public class LastWeatherDateView extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        lbDateLastUpdate = new javax.swing.JLabel();
-        lbTemperatureLastUpdate = new javax.swing.JLabel();
-        lbHumidityLastUpdate = new javax.swing.JLabel();
-        lbPressureLastUpdate = new javax.swing.JLabel();
+        lbDate = new javax.swing.JLabel();
+        lbTemperature = new javax.swing.JLabel();
+        lbHumidity = new javax.swing.JLabel();
+        lbPressure = new javax.swing.JLabel();
 
         setTitle("Última atualização de tempo");
 
@@ -48,13 +48,13 @@ public class LastWeatherDateView extends javax.swing.JInternalFrame {
 
         jLabel8.setText("Pressão");
 
-        lbDateLastUpdate.setText("DD/MM/AAAA");
+        lbDate.setText("DD/MM/AAAA");
 
-        lbTemperatureLastUpdate.setText("TEMPERATURA");
+        lbTemperature.setText("TEMPERATURA");
 
-        lbHumidityLastUpdate.setText("HUMIDADE");
+        lbHumidity.setText("HUMIDADE");
 
-        lbPressureLastUpdate.setText("PRESSÃO");
+        lbPressure.setText("PRESSÃO");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -69,10 +69,10 @@ public class LastWeatherDateView extends javax.swing.JInternalFrame {
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbDateLastUpdate)
-                    .addComponent(lbTemperatureLastUpdate)
-                    .addComponent(lbHumidityLastUpdate)
-                    .addComponent(lbPressureLastUpdate))
+                    .addComponent(lbDate)
+                    .addComponent(lbTemperature)
+                    .addComponent(lbHumidity)
+                    .addComponent(lbPressure))
                 .addGap(55, 55, 55))
         );
         layout.setVerticalGroup(
@@ -81,19 +81,19 @@ public class LastWeatherDateView extends javax.swing.JInternalFrame {
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(lbDateLastUpdate))
+                    .addComponent(lbDate))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(lbTemperatureLastUpdate))
+                    .addComponent(lbTemperature))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(lbHumidityLastUpdate))
+                    .addComponent(lbHumidity))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(lbPressureLastUpdate))
+                    .addComponent(lbPressure))
                 .addContainerGap(55, Short.MAX_VALUE))
         );
 
@@ -106,26 +106,26 @@ public class LastWeatherDateView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel lbDateLastUpdate;
-    private javax.swing.JLabel lbHumidityLastUpdate;
-    private javax.swing.JLabel lbPressureLastUpdate;
-    private javax.swing.JLabel lbTemperatureLastUpdate;
+    private javax.swing.JLabel lbDate;
+    private javax.swing.JLabel lbHumidity;
+    private javax.swing.JLabel lbPressure;
+    private javax.swing.JLabel lbTemperature;
     // End of variables declaration//GEN-END:variables
 
-    public JLabel getLbDateLastUpdate() {
-        return lbDateLastUpdate;
+    public JLabel getLbDate() {
+        return lbDate;
     }
 
-    public JLabel getLbHumidityLastUpdate() {
-        return lbHumidityLastUpdate;
+    public JLabel getLbHumidity() {
+        return lbHumidity;
     }
 
-    public JLabel getLbPressureLastUpdate() {
-        return lbPressureLastUpdate;
+    public JLabel getLbPressure() {
+        return lbPressure;
     }
 
-    public JLabel getLbTemperatureLastUpdate() {
-        return lbTemperatureLastUpdate;
+    public JLabel getLbTemperature() {
+        return lbTemperature;
     }
 
 }

@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class Daily extends Averaging {
+public class Monthly extends Averaging {
 
-    public Daily() {
+    public Monthly() {
     }
 
     @Override
@@ -15,7 +15,7 @@ public class Daily extends Averaging {
         List<List<List<WeatherData>>> listOfDays = new ArrayList<>();
         List<List<WeatherData>> weatherListGroupedByYear = weatherListGroupedByYear();
         for (List<WeatherData> list : weatherListGroupedByYear) {
-            Map<Integer, List<WeatherData>> weatherListGroupedByDay = list.stream().collect(Collectors.groupingBy(w -> w.getCustomDate().getDayOfYear()));
+            Map<Integer, List<WeatherData>> weatherListGroupedByDay = list.stream().collect(Collectors.groupingBy(w -> w.getCustomDate().getMonthOfYear()));
             List<List<WeatherData>> newList = new ArrayList<>(weatherListGroupedByDay.values());
             listOfDays.add(newList);
         }

@@ -3,10 +3,13 @@ package com.mycompany.weatherdatadisplay.presenter;
 import com.mycompany.weatherdatadisplay.interfaces.IObserver;
 import com.mycompany.weatherdatadisplay.model.Averaging;
 import com.mycompany.weatherdatadisplay.model.Daily;
+import com.mycompany.weatherdatadisplay.model.Monthly;
 import com.mycompany.weatherdatadisplay.model.WeatherData;
+import com.mycompany.weatherdatadisplay.model.Weekly;
 import com.mycompany.weatherdatadisplay.view.AverageDataView;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.List;
 
 public class AverageDataPresenter implements IObserver {
@@ -31,29 +34,54 @@ public class AverageDataPresenter implements IObserver {
     }
 
     private void initListeners() {
-        view.getCbCourse().addActionListener(new ActionListener() {
+        view.getCbCourse().addItemListener(new ItemListener() {
             @Override
-            public void actionPerformed(ActionEvent arg0) {
+            public void itemStateChanged(ItemEvent e) {
                 defineInstanceOfSelectedItem();
+                updateLabels();
             }
         });
     }
-    
+
     private void defineInstanceOfSelectedItem() {
         int indexItem = view.getCbCourse().getSelectedIndex();
-        
-        switch(indexItem) {
+
+        switch (indexItem) {
             case 0:
                 selectedItem = new Daily();
+                break;
+            case 1:
+                selectedItem = new Weekly();
+                break;
+            case 2:
+                selectedItem = new Monthly();
+                break;
         }
+    }
+
+    private void updateLabels() {
+        view.getLbTemperature().setText(selectedItem.getAverageTemperature().toString());
+        view.getLbHumidity().setText(selectedItem.getAverageHumidity().toString());
+        view.getLbPressure().setText(selectedItem.getAveragePressure().toString());
+    }
+
+    private void restartLabels() {
+        view.getLbTemperature().setText("TEMPERATURA");
+        view.getLbHumidity().setText("HUMIDADE");
+        view.getLbPressure().setText("PRESSÃO");
+        view.getLbNumberOfRecords().setText("NRO DE REGISTROS");
     }
 
     @Override
     public void update(List<WeatherData> weathers) {
-        view.getLbTemperature().setText(selectedItem.getAverageTemperature().toString());
-        view.getLbHumidity().setText(selectedItem.getAverageHumidity().toString());
-        view.getLbPressure().setText(selectedItem.getAveragePressure().toString());
-        view.getLbNumberOfRecords().setText(String.valueOf((weathers.size())));
+        if (weathers.isEmpty()) {
+            restartLabels();
+        } else {
+            view.getLbTemperature().setText(selectedItem.getAverageTemperature().toString());
+            view.getLbHumidity().setText(selectedItem.getAverageHumidity().toString());
+            view.getLbPressure().setText(selectedItem.getAveragePressure().toString());
+            view.getLbNumberOfRecords().setText(String.valueOf((weathers.size())));
+        }
     }
 
     public AverageDataView getView() {

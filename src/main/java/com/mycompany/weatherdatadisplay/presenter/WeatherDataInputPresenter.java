@@ -56,7 +56,7 @@ public class WeatherDataInputPresenter {
         WeatherDataCollection weatherDataCollection = WeatherDataCollection.getInstance();
         WeatherData weatherData = new WeatherData();
 
-        weatherData.setDate(DateUtil.stringToDate(view.getTfDate().getText()));
+        weatherData.setCustomDate(DateUtil.stringToDate(view.getTfDate().getText()));
         weatherData.setHumidity(Double.parseDouble(view.getTfHumidity().getText()));
         weatherData.setPressure(Double.parseDouble(view.getTfPressure().getText()));
         weatherData.setTemperature(Double.parseDouble(view.getTfTemperature().getText()));

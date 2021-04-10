@@ -1,31 +1,26 @@
 package com.mycompany.weatherdatadisplay.model;
 
+import com.mycompany.weatherdatadisplay.utils.DateUtil;
 import java.util.Date;
 import java.util.Objects;
 
 public class WeatherData {
 
-    private Date date;
+    private CustomDate customDate;
     private Double temperature;
     private Double humidity;
     private Double pressure;
 
     public WeatherData() {
-    }
-
-    public WeatherData(Date date, Double temperature, Double humidity, Double pressure) {
-        this.date = date;
-        this.temperature = temperature;
-        this.humidity = humidity;
-        this.pressure = pressure;
+        customDate = new CustomDate();
     }
     
-    public Date getDate() {
-        return date;
+    public CustomDate getCustomDate() {
+        return customDate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setCustomDate(Date date) {
+        this.customDate.setDate(date);
     }
 
     public Double getTemperature() {
@@ -54,7 +49,7 @@ public class WeatherData {
 
     @Override
     public String toString() {
-        return "WeatherData{" + "date=" + date + ", temperature=" + temperature + ", humidity=" + humidity + ", pressure=" + pressure + '}';
+        return "WeatherData{" + "date=" + DateUtil.dateToString(customDate.getDate()) + ", temperature=" + temperature + ", humidity=" + humidity + ", pressure=" + pressure + '}';
     }
 
     @Override
@@ -69,7 +64,7 @@ public class WeatherData {
             return false;
         }
         final WeatherData other = (WeatherData) obj;
-        if (!Objects.equals(this.date, other.date)) {
+        if (!Objects.equals(this.customDate, other.customDate)) {
             return false;
         }
         if (!Objects.equals(this.temperature, other.temperature)) {

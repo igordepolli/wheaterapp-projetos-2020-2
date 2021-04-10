@@ -24,12 +24,25 @@ public class LastWeatherDatePresenter implements IObserver {
         return instance;
     }
 
+    private void restartLabels() {
+        view.getLbDate().setText("DD/MM/AAAA");
+        view.getLbTemperature().setText("TEMPERATURA");
+        view.getLbHumidity().setText("HUMIDADE");
+        view.getLbPressure().setText("PRESSÃO");
+    }
+
     @Override
     public void update(List<WeatherData> weathers) {
-        view.getLbDateLastUpdate().setText(DateUtil.dateToString(weathers.get(weathers.size() - 1).getDate()));
-        view.getLbHumidityLastUpdate().setText(weathers.get(weathers.size() - 1).getHumidity().toString());
-        view.getLbPressureLastUpdate().setText(weathers.get(weathers.size() - 1).getPressure().toString());
-        view.getLbTemperatureLastUpdate().setText(weathers.get(weathers.size() - 1).getTemperature().toString());
+        if (weathers.isEmpty()) {
+            restartLabels();
+        } else {
+            WeatherData last = weathers.get(weathers.size() - 1);
+
+            view.getLbDate().setText(DateUtil.dateToString(last.getCustomDate().getDate()));
+            view.getLbHumidity().setText(last.getHumidity().toString());
+            view.getLbPressure().setText(last.getPressure().toString());
+            view.getLbTemperature().setText(last.getTemperature().toString());
+        }
     }
 
     public LastWeatherDateView getView() {

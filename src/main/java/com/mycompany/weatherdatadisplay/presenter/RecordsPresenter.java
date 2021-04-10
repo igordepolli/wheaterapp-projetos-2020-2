@@ -79,7 +79,7 @@ public class RecordsPresenter implements IObserver {
         clearTable();
         for (WeatherData weatherData : weathers) {
             tbWeatherDatas.addRow(new Object[]{
-                DateUtil.dateToString(weatherData.getDate()),
+                DateUtil.dateToString(weatherData.getCustomDate().getDate()),
                 weatherData.getTemperature(),
                 weatherData.getHumidity(),
                 weatherData.getPressure()

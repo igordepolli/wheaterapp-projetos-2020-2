@@ -32,10 +32,10 @@
               </Group>
               <EmptySpace pref="133" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lbDateLastUpdate" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="lbTemperatureLastUpdate" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="lbHumidityLastUpdate" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="lbPressureLastUpdate" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbDate" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbTemperature" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbHumidity" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbPressure" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
           </Group>
@@ -47,22 +47,22 @@
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lbDateLastUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbDate" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lbTemperatureLastUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbTemperature" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lbHumidityLastUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbHumidity" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lbPressureLastUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbPressure" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="55" max="32767" attributes="0"/>
           </Group>
@@ -90,22 +90,22 @@
         <Property name="text" type="java.lang.String" value="Press&#xe3;o"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lbDateLastUpdate">
+    <Component class="javax.swing.JLabel" name="lbDate">
       <Properties>
         <Property name="text" type="java.lang.String" value="DD/MM/AAAA"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lbTemperatureLastUpdate">
+    <Component class="javax.swing.JLabel" name="lbTemperature">
       <Properties>
         <Property name="text" type="java.lang.String" value="TEMPERATURA"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lbHumidityLastUpdate">
+    <Component class="javax.swing.JLabel" name="lbHumidity">
       <Properties>
         <Property name="text" type="java.lang.String" value="HUMIDADE"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lbPressureLastUpdate">
+    <Component class="javax.swing.JLabel" name="lbPressure">
       <Properties>
         <Property name="text" type="java.lang.String" value="PRESS&#xc3;O"/>
       </Properties>
