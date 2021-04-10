@@ -1,6 +1,5 @@
 package com.mycompany.weatherdatadisplay.model;
 
-import com.mycompany.weatherdatadisplay.model.average.CustomDate;
 import java.util.Date;
 import java.util.Objects;
 
@@ -14,7 +13,7 @@ public class WeatherData {
     public WeatherData() {
         customDate = new CustomDate();
     }
-    
+
     public CustomDate getCustomDate() {
         return customDate;
     }

@@ -1,8 +1,5 @@
 package com.mycompany.weatherdatadisplay.model.logs;
 
-import com.mycompany.weatherdatadisplay.model.Log;
-import com.mycompany.weatherdatadisplay.model.LogElement;
-import com.mycompany.weatherdatadisplay.model.LogElementCollection;
 import com.mycompany.weatherdatadisplay.utils.DateUtil;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -27,10 +24,10 @@ public class JSONLog extends Log {
     private void fillAndWriteJSON() throws Exception {
         for (LogElement log : logElements.getLogElements()) {
             JSONObject obj = new JSONObject();
-            obj.put("Humidade", log.getWeatherData().getHumidity());
-            obj.put("Temperatura", log.getWeatherData().getTemperature());
+            obj.put("Humidade", log.getWeatherData().getHumidity() + "%");
+            obj.put("Temperatura", log.getWeatherData().getTemperature() + "º C");
             obj.put("Ação", log.getAction());
-            obj.put("Pressão", log.getWeatherData().getPressure());
+            obj.put("Pressão", log.getWeatherData().getPressure() + " mb");
             obj.put("Data", DateUtil.dateToString(log.getWeatherData().getCustomDate().getDate()));
             file.write("Elemento: " + obj.toJSONString());
             file.write("\n");

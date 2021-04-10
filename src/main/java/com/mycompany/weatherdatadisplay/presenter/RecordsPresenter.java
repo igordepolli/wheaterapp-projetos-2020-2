@@ -1,8 +1,8 @@
 package com.mycompany.weatherdatadisplay.presenter;
 
 import com.mycompany.weatherdatadisplay.interfaces.IObserver;
-import com.mycompany.weatherdatadisplay.model.LogElement;
-import com.mycompany.weatherdatadisplay.model.LogElementCollection;
+import com.mycompany.weatherdatadisplay.model.logs.LogElement;
+import com.mycompany.weatherdatadisplay.model.logs.LogElementCollection;
 import com.mycompany.weatherdatadisplay.model.WeatherData;
 import com.mycompany.weatherdatadisplay.model.WeatherDataCollection;
 import com.mycompany.weatherdatadisplay.utils.DateUtil;
@@ -88,12 +88,10 @@ public class RecordsPresenter implements IObserver {
         }
     }
 
-    private boolean checkCollectionIsEmpty() throws Exception {
+    private void checkCollectionIsEmpty() throws Exception {
         if (collectionWeatherData.weathersIsEmpty()) {
             throw new Exception("Não é possível remover de uma lista vazia!");
         }
-
-        return false;
     }
 
     @Override
@@ -102,9 +100,9 @@ public class RecordsPresenter implements IObserver {
         for (WeatherData weatherData : weathers) {
             tbWeatherDatas.addRow(new Object[]{
                 DateUtil.dateToString(weatherData.getCustomDate().getDate()),
-                weatherData.getTemperature(),
-                weatherData.getHumidity(),
-                weatherData.getPressure()
+                weatherData.getTemperature() + "º C",
+                weatherData.getHumidity() + "%",
+                weatherData.getPressure() + " mb"
             });
         }
     }

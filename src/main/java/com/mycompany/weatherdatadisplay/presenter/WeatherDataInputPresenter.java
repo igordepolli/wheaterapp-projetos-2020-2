@@ -1,7 +1,7 @@
 package com.mycompany.weatherdatadisplay.presenter;
 
-import com.mycompany.weatherdatadisplay.model.LogElement;
-import com.mycompany.weatherdatadisplay.model.LogElementCollection;
+import com.mycompany.weatherdatadisplay.model.logs.LogElement;
+import com.mycompany.weatherdatadisplay.model.logs.LogElementCollection;
 import com.mycompany.weatherdatadisplay.model.WeatherData;
 import com.mycompany.weatherdatadisplay.model.WeatherDataCollection;
 import com.mycompany.weatherdatadisplay.utils.DateUtil;
@@ -81,18 +81,16 @@ public class WeatherDataInputPresenter {
     }
 
     private boolean fieldsIsEmpty() {
-        return view.getTfDate().getText().replaceAll("\\s", "").equals("")
-                && view.getTfHumidity().getText().equals("")
-                && view.getTfPressure().getText().equals("")
-                && view.getTfTemperature().getText().equals("");
+        return view.getTfDate().getText().replaceAll("\\s", "").equals("//")
+                || view.getTfHumidity().getText().equals("")
+                || view.getTfPressure().getText().equals("")
+                || view.getTfTemperature().getText().equals("");
     }
 
-    private boolean checkFieldsIsEmpty() throws Exception {
+    private void checkFieldsIsEmpty() throws Exception {
         if (fieldsIsEmpty()) {
             throw new Exception("TODOS os campos devem ser preenchidos!");
         }
-
-        return false;
     }
 
     public WeatherDataInputView getView() {

@@ -1,6 +1,6 @@
 package com.mycompany.weatherdatadisplay.presenter;
 
-import com.mycompany.weatherdatadisplay.model.LogElementCollection;
+import com.mycompany.weatherdatadisplay.model.logs.LogElementCollection;
 import com.mycompany.weatherdatadisplay.model.WeatherDataCollection;
 import com.mycompany.weatherdatadisplay.view.MainScreenView;
 import java.awt.event.ActionEvent;

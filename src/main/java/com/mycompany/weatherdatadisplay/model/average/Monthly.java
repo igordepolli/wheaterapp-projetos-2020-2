@@ -1,6 +1,5 @@
 package com.mycompany.weatherdatadisplay.model.average;
 
-import com.mycompany.weatherdatadisplay.model.Averaging;
 import com.mycompany.weatherdatadisplay.model.WeatherData;
 import java.util.ArrayList;
 import java.util.List;

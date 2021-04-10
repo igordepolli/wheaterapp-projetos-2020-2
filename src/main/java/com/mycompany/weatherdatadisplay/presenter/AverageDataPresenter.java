@@ -1,7 +1,7 @@
 package com.mycompany.weatherdatadisplay.presenter;
 
 import com.mycompany.weatherdatadisplay.interfaces.IObserver;
-import com.mycompany.weatherdatadisplay.model.Averaging;
+import com.mycompany.weatherdatadisplay.model.average.Averaging;
 import com.mycompany.weatherdatadisplay.model.average.Daily;
 import com.mycompany.weatherdatadisplay.model.average.Monthly;
 import com.mycompany.weatherdatadisplay.model.WeatherData;
@@ -60,9 +60,9 @@ public class AverageDataPresenter implements IObserver {
     }
 
     private void updateLabels() {
-        view.getLbTemperature().setText(selectedItem.getAverageTemperature().toString());
-        view.getLbHumidity().setText(selectedItem.getAverageHumidity().toString());
-        view.getLbPressure().setText(selectedItem.getAveragePressure().toString());
+        view.getLbTemperature().setText(selectedItem.getAverageTemperature().toString() + " º C");
+        view.getLbHumidity().setText(selectedItem.getAverageHumidity().toString() + "%");
+        view.getLbPressure().setText(selectedItem.getAveragePressure().toString() + " mb");
     }
 
     private void restartLabels() {
@@ -77,9 +77,9 @@ public class AverageDataPresenter implements IObserver {
         if (weathers.isEmpty()) {
             restartLabels();
         } else {
-            view.getLbTemperature().setText(selectedItem.getAverageTemperature().toString());
-            view.getLbHumidity().setText(selectedItem.getAverageHumidity().toString());
-            view.getLbPressure().setText(selectedItem.getAveragePressure().toString());
+            view.getLbTemperature().setText(selectedItem.getAverageTemperature().toString() + "º C");
+            view.getLbHumidity().setText(selectedItem.getAverageHumidity().toString() + "%");
+            view.getLbPressure().setText(selectedItem.getAveragePressure().toString() + " mb");
             view.getLbNumberOfRecords().setText(String.valueOf((weathers.size())));
         }
     }

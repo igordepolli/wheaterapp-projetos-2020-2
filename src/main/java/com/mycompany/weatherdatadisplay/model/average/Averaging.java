@@ -1,5 +1,7 @@
-package com.mycompany.weatherdatadisplay.model;
+package com.mycompany.weatherdatadisplay.model.average;
 
+import com.mycompany.weatherdatadisplay.model.WeatherData;
+import com.mycompany.weatherdatadisplay.model.WeatherDataCollection;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -10,9 +12,9 @@ public abstract class Averaging {
     public abstract List<List<List<WeatherData>>> modifyCollection();
 
     public abstract Double getAverageTemperature();
-    
+
     public abstract Double getAverageHumidity();
-    
+
     public abstract Double getAveragePressure();
 
     protected final List<List<WeatherData>> weatherListGroupedByYear() {
@@ -42,7 +44,7 @@ public abstract class Averaging {
         }
         return sumAll / listYear.size();
     }
-    
+
     protected final Double humidityAverage(List<List<List<WeatherData>>> listYear) {
         Double sumAll = 0.0;
         for (List<List<WeatherData>> listDate : listYear) {
@@ -62,7 +64,7 @@ public abstract class Averaging {
         }
         return sumAll / listYear.size();
     }
-    
+
     protected final Double pressureAverage(List<List<List<WeatherData>>> listYear) {
         Double sumAll = 0.0;
         for (List<List<WeatherData>> listDate : listYear) {

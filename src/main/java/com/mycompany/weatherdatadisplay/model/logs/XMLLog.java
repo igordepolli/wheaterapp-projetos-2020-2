@@ -1,11 +1,7 @@
 package com.mycompany.weatherdatadisplay.model.logs;
 
-import com.mycompany.weatherdatadisplay.model.Log;
-import com.mycompany.weatherdatadisplay.model.LogElement;
-import com.mycompany.weatherdatadisplay.model.LogElementCollection;
 import com.mycompany.weatherdatadisplay.utils.DateUtil;
 import java.io.File;
-import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.OutputKeys;
@@ -21,7 +17,6 @@ import org.w3c.dom.Node;
 public class XMLLog extends Log {
 
     private Document document;
-    private File file;
 
     public XMLLog(LogElementCollection logElements) {
         this.logElements = logElements;
@@ -58,15 +53,15 @@ public class XMLLog extends Log {
         element.setAttributeNode(date);
 
         Attr temperature = document.createAttribute("Temperatura");
-        temperature.setValue(logCollection.getWeatherData().getTemperature().toString());
+        temperature.setValue(logCollection.getWeatherData().getTemperature().toString() + "º C");
         element.setAttributeNode(temperature);
 
         Attr humidity = document.createAttribute("Humidade");
-        humidity.setValue(logCollection.getWeatherData().getHumidity().toString());
+        humidity.setValue(logCollection.getWeatherData().getHumidity().toString() + "%");
         element.setAttributeNode(humidity);
 
         Attr pressure = document.createAttribute("Pressão");
-        pressure.setValue(logCollection.getWeatherData().getPressure().toString());
+        pressure.setValue(logCollection.getWeatherData().getPressure().toString() + " mb");
         element.setAttributeNode(pressure);
     }
 
@@ -78,14 +73,14 @@ public class XMLLog extends Log {
 
     private void writeDocument() throws Exception {
         TransformerFactory tFactory = TransformerFactory.newInstance();
-        
+
         Transformer transformer = tFactory.newTransformer();
         transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
         transformer.setOutputProperty(OutputKeys.INDENT, "yes");
         transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
 
         DOMSource source = new DOMSource(document);
-        
+
         StreamResult result = new StreamResult(new File("xmlog.xml"));
 
         transformer.transform(source, result);

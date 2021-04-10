@@ -39,9 +39,9 @@ public class LastWeatherDatePresenter implements IObserver {
             WeatherData last = weathers.get(weathers.size() - 1);
 
             view.getLbDate().setText(DateUtil.dateToString(last.getCustomDate().getDate()));
-            view.getLbHumidity().setText(last.getHumidity().toString());
-            view.getLbPressure().setText(last.getPressure().toString());
-            view.getLbTemperature().setText(last.getTemperature().toString());
+            view.getLbTemperature().setText(last.getTemperature().toString() + "º C");
+            view.getLbHumidity().setText(last.getHumidity().toString() + "%");
+            view.getLbPressure().setText(last.getPressure().toString() + " mb");
         }
     }
 

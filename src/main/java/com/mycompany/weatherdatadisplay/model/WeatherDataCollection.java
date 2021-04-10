@@ -32,7 +32,7 @@ public class WeatherDataCollection implements ISubject {
         weathers.remove(weatherData);
         notifyObservers();
     }
-    
+
     public boolean weathersIsEmpty() {
         return weathers.isEmpty();
     }

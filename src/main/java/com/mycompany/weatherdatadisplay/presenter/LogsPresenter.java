@@ -1,7 +1,7 @@
 package com.mycompany.weatherdatadisplay.presenter;
 
-import com.mycompany.weatherdatadisplay.model.Log;
-import com.mycompany.weatherdatadisplay.model.LogElementCollection;
+import com.mycompany.weatherdatadisplay.model.logs.Log;
+import com.mycompany.weatherdatadisplay.model.logs.LogElementCollection;
 import com.mycompany.weatherdatadisplay.model.logs.JSONLog;
 import com.mycompany.weatherdatadisplay.model.logs.XMLLog;
 import com.mycompany.weatherdatadisplay.view.LogsView;
@@ -45,11 +45,12 @@ public class LogsPresenter {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
+                    checkLogHasBeenConfigured();
                     checkCollectionIsEmpty();
                     log.write();
                     JOptionPane.showMessageDialog(view, "Log gerado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
                 } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(view, "Erro ao salvar o arquivo!", "Erro", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(view, ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
@@ -71,6 +72,12 @@ public class LogsPresenter {
     private void checkCollectionIsEmpty() throws Exception {
         if (logElements.logElementsIsEmpty()) {
             throw new Exception("Insira/Remove ao menos um elemento para gerar o log!");
+        }
+    }
+
+    private void checkLogHasBeenConfigured() throws Exception {
+        if (log == null) {
+            throw new Exception("Selecione um formato para o log!");
         }
     }
 
