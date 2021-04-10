@@ -2,10 +2,10 @@ package com.mycompany.weatherdatadisplay.presenter;
 
 import com.mycompany.weatherdatadisplay.interfaces.IObserver;
 import com.mycompany.weatherdatadisplay.model.Averaging;
-import com.mycompany.weatherdatadisplay.model.Daily;
-import com.mycompany.weatherdatadisplay.model.Monthly;
+import com.mycompany.weatherdatadisplay.model.average.Daily;
+import com.mycompany.weatherdatadisplay.model.average.Monthly;
 import com.mycompany.weatherdatadisplay.model.WeatherData;
-import com.mycompany.weatherdatadisplay.model.Weekly;
+import com.mycompany.weatherdatadisplay.model.average.Weekly;
 import com.mycompany.weatherdatadisplay.view.AverageDataView;
 
 import java.awt.event.ItemEvent;

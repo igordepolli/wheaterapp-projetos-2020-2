@@ -35,7 +35,7 @@ public class MainScreenView extends javax.swing.JInternalFrame {
         mnConfigure = new javax.swing.JMenu();
         miGenerateLog = new javax.swing.JMenuItem();
 
-        setTitle("Weather");
+        setTitle("Weather Data Display");
 
         mnConfigure.setText("Configurar");
 

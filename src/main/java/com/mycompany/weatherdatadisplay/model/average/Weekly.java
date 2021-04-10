@@ -1,13 +1,15 @@
-package com.mycompany.weatherdatadisplay.model;
+package com.mycompany.weatherdatadisplay.model.average;
 
+import com.mycompany.weatherdatadisplay.model.Averaging;
+import com.mycompany.weatherdatadisplay.model.WeatherData;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class Monthly extends Averaging {
+public class Weekly extends Averaging {
 
-    public Monthly() {
+    public Weekly() {
     }
 
     @Override
@@ -15,7 +17,7 @@ public class Monthly extends Averaging {
         List<List<List<WeatherData>>> listOfDays = new ArrayList<>();
         List<List<WeatherData>> weatherListGroupedByYear = weatherListGroupedByYear();
         for (List<WeatherData> list : weatherListGroupedByYear) {
-            Map<Integer, List<WeatherData>> weatherListGroupedByDay = list.stream().collect(Collectors.groupingBy(w -> w.getCustomDate().getMonthOfYear()));
+            Map<Integer, List<WeatherData>> weatherListGroupedByDay = list.stream().collect(Collectors.groupingBy(w -> w.getCustomDate().getWeekOfYear()));
             List<List<WeatherData>> newList = new ArrayList<>(weatherListGroupedByDay.values());
             listOfDays.add(newList);
         }

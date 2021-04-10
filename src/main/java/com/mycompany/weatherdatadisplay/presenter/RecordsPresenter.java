@@ -1,6 +1,7 @@
 package com.mycompany.weatherdatadisplay.presenter;
 
 import com.mycompany.weatherdatadisplay.interfaces.IObserver;
+import com.mycompany.weatherdatadisplay.model.Log;
 import com.mycompany.weatherdatadisplay.model.WeatherData;
 import com.mycompany.weatherdatadisplay.model.WeatherDataCollection;
 import com.mycompany.weatherdatadisplay.utils.DateUtil;
@@ -9,6 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
@@ -40,8 +43,12 @@ public class RecordsPresenter implements IObserver {
         view.getBtRemoveRecords().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                removeItemList();
-                JOptionPane.showMessageDialog(view, "Clima removido com sucesso!");
+                try {
+                    removeItemList();
+                    JOptionPane.showMessageDialog(view, "Clima removido com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(view, ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
     }
@@ -57,11 +64,22 @@ public class RecordsPresenter implements IObserver {
         view.getTbRecords().setModel(tbWeatherDatas);
     }
 
-    private void removeItemList() {
+    private void removeItemList() throws Exception {
+        Log log = LogsPresenter.getInstanceLog();
+        
+        if (collectionWeatherData.getWeathers().isEmpty()) {
+            throw new Exception("Não é possível remover de uma lista vazia!");
+        }
+        
+        if (log == null) {
+            throw new Exception("Por favor, configure um log primeiro!");
+        }
+        
         List<WeatherData> auxList = new ArrayList<>(collectionWeatherData.getWeathers());
         for (int i = 0; i < auxList.size(); i++) {
             if (view.getTbRecords().getSelectedRow() == i) {
                 collectionWeatherData.removeWeatherData(auxList.get(i));
+                log.addElementInLog(auxList.get(i), "Removed");
             }
         }
     }

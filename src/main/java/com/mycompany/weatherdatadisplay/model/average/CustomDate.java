@@ -1,4 +1,4 @@
-package com.mycompany.weatherdatadisplay.model;
+package com.mycompany.weatherdatadisplay.model.average;
 
 import com.mycompany.weatherdatadisplay.utils.DateUtil;
 import java.util.Date;

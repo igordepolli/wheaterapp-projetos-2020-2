@@ -5,6 +5,9 @@
  */
 package com.mycompany.weatherdatadisplay.view;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+
 /**
  *
  * @author igor
@@ -28,17 +31,17 @@ public class LogsView extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel14 = new javax.swing.JLabel();
-        cbLogSystemSetup = new javax.swing.JComboBox<>();
-        btSaveSystemSetup = new javax.swing.JButton();
+        cbLog = new javax.swing.JComboBox<>();
+        btSave = new javax.swing.JButton();
 
         setTitle("Configuração do Sistema");
 
         jLabel14.setText("Log");
 
-        cbLogSystemSetup.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "JSON", "XML" }));
-        cbLogSystemSetup.setSelectedIndex(-1);
+        cbLog.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "JSON", "XML" }));
+        cbLog.setSelectedIndex(-1);
 
-        btSaveSystemSetup.setText("Salvar");
+        btSave.setText("Salvar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -50,21 +53,21 @@ public class LogsView extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel14)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbLogSystemSetup, 0, 332, Short.MAX_VALUE))
+                        .addComponent(cbLog, 0, 332, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btSaveSystemSetup)))
+                        .addComponent(btSave)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
+                .addContainerGap(24, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(cbLogSystemSetup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbLog, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btSaveSystemSetup))
+                .addComponent(btSave))
         );
 
         pack();
@@ -72,8 +75,16 @@ public class LogsView extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btSaveSystemSetup;
-    private javax.swing.JComboBox<String> cbLogSystemSetup;
+    private javax.swing.JButton btSave;
+    private javax.swing.JComboBox<String> cbLog;
     private javax.swing.JLabel jLabel14;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getBtSave() {
+        return btSave;
+    }
+
+    public JComboBox<String> getCbLog() {
+        return cbLog;
+    }
 }

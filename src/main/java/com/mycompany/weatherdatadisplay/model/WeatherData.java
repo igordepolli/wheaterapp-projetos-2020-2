@@ -1,12 +1,13 @@
 package com.mycompany.weatherdatadisplay.model;
 
+import com.mycompany.weatherdatadisplay.model.average.CustomDate;
 import com.mycompany.weatherdatadisplay.utils.DateUtil;
 import java.util.Date;
 import java.util.Objects;
 
 public class WeatherData {
 
-    private CustomDate customDate;
+    private final CustomDate customDate;
     private Double temperature;
     private Double humidity;
     private Double pressure;
