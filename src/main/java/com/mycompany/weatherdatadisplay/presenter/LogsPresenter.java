@@ -1,6 +1,8 @@
 package com.mycompany.weatherdatadisplay.presenter;
 
 import com.mycompany.weatherdatadisplay.model.Log;
+import com.mycompany.weatherdatadisplay.model.LogCollection;
+import com.mycompany.weatherdatadisplay.model.WeatherData;
 import com.mycompany.weatherdatadisplay.model.logs.JSONLog;
 import com.mycompany.weatherdatadisplay.model.logs.XMLLog;
 import com.mycompany.weatherdatadisplay.view.LogsView;
@@ -8,10 +10,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LogsPresenter {
 
     private static LogsPresenter instance = null;
+    protected List<LogCollection> logCollectionList;
     private final LogsView view;
     private static Log log;
 
@@ -19,6 +24,7 @@ public class LogsPresenter {
         view = new LogsView();
         view.setLocation(950, 20);
         view.setVisible(true);
+        logCollectionList = new ArrayList<>();
         initListeners();
     }
 
@@ -40,7 +46,7 @@ public class LogsPresenter {
         view.getBtSave().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                log.write();
             }
         });
     }
@@ -50,12 +56,20 @@ public class LogsPresenter {
 
         switch (indexItem) {
             case 0:
-                log = new JSONLog();
+                log = new JSONLog(logCollectionList);
                 break;
             case 1:
-                log = new XMLLog();
+                log = new XMLLog(logCollectionList);
                 break;
         }
+    }
+    
+    public final void addElementInLog(WeatherData weatherData, String action) {
+        LogCollection logCollection = new LogCollection();
+        logCollection.setWeatherData(weatherData);
+        logCollection.setAction(action);
+        
+        logCollectionList.add(logCollection);
     }
     
     public static Log getInstanceLog() {

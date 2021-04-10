@@ -53,6 +53,7 @@ public class WeatherDataInputPresenter {
     }
 
     private void addWeatherData() throws Exception {
+        LogsPresenter logPresenter = LogsPresenter.getInstance();
         Log log = LogsPresenter.getInstanceLog();
         
         if (log == null) {
@@ -72,7 +73,7 @@ public class WeatherDataInputPresenter {
         weatherData.setTemperature(Double.parseDouble(view.getTfTemperature().getText()));
         
         weatherDataCollection.addWeatherData(weatherData);
-        log.addElementInLog(weatherData, "Included");
+        logPresenter.addElementInLog(weatherData, "Included");
     }
 
     private void cleanFields() {

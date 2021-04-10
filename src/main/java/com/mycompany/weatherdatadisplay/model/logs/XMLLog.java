@@ -1,17 +1,20 @@
 package com.mycompany.weatherdatadisplay.model.logs;
 
 import com.mycompany.weatherdatadisplay.model.Log;
-import java.util.ArrayList;
+import com.mycompany.weatherdatadisplay.model.LogCollection;
+import java.util.List;
 
 public class XMLLog extends Log {
     
-    public XMLLog() {
-        logCollectionList = new ArrayList<>();
+    public XMLLog(List<LogCollection> logCollectionList) {
+        this.logCollectionList = logCollectionList;
     }
     
     @Override
-    public void write(String message) {
-        
+    public void write() {
+        for (LogCollection log : logCollectionList) {
+            System.out.println("XML: " + log.getWeatherData() + log.getAction());
+        }
     }
 
 }

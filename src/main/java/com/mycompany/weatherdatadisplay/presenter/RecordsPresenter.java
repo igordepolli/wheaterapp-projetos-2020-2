@@ -10,8 +10,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
@@ -65,6 +63,7 @@ public class RecordsPresenter implements IObserver {
     }
 
     private void removeItemList() throws Exception {
+        LogsPresenter logPresenter = LogsPresenter.getInstance();
         Log log = LogsPresenter.getInstanceLog();
         
         if (collectionWeatherData.getWeathers().isEmpty()) {
@@ -79,7 +78,7 @@ public class RecordsPresenter implements IObserver {
         for (int i = 0; i < auxList.size(); i++) {
             if (view.getTbRecords().getSelectedRow() == i) {
                 collectionWeatherData.removeWeatherData(auxList.get(i));
-                log.addElementInLog(auxList.get(i), "Removed");
+                logPresenter.addElementInLog(auxList.get(i), "Removed");
             }
         }
     }
