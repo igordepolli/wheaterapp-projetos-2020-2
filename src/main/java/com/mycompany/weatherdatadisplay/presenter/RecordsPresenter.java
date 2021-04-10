@@ -42,6 +42,7 @@ public class RecordsPresenter implements IObserver {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
+                    checkCollectionIsEmpty();
                     removeItemList();
                     JOptionPane.showMessageDialog(view, "Clima removido com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
                 } catch (Exception ex) {
@@ -64,21 +65,12 @@ public class RecordsPresenter implements IObserver {
 
     private void removeItemList() throws Exception {
         LogsPresenter logPresenter = LogsPresenter.getInstance();
-        Log log = LogsPresenter.getInstanceLog();
-        
-        if (collectionWeatherData.getWeathers().isEmpty()) {
-            throw new Exception("Não é possível remover de uma lista vazia!");
-        }
-        
-        if (log == null) {
-            throw new Exception("Por favor, configure um log primeiro!");
-        }
         
         List<WeatherData> auxList = new ArrayList<>(collectionWeatherData.getWeathers());
         for (int i = 0; i < auxList.size(); i++) {
             if (view.getTbRecords().getSelectedRow() == i) {
                 collectionWeatherData.removeWeatherData(auxList.get(i));
-                logPresenter.addElementInLog(auxList.get(i), "Removed");
+                logPresenter.addElementInLog(auxList.get(i), "Removido");
             }
         }
     }
@@ -89,6 +81,14 @@ public class RecordsPresenter implements IObserver {
                 tbWeatherDatas.removeRow(i);
             }
         }
+    }
+    
+    private boolean checkCollectionIsEmpty() throws Exception {
+        if (collectionWeatherData.getWeathers().isEmpty()) {
+            throw new Exception("Não é possível remover de uma lista vazia!");
+        }
+        
+        return false;
     }
 
     @Override

@@ -12,8 +12,6 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class LogsPresenter {
@@ -50,6 +48,7 @@ public class LogsPresenter {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
+                    checkCollectionIsEmpty();
                     log.write();
                     JOptionPane.showMessageDialog(view, "Log gerado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
                 } catch (Exception ex) {
@@ -80,8 +79,16 @@ public class LogsPresenter {
         logCollectionList.add(logCollection);
     }
     
-    public static Log getInstanceLog() {
-        return log;
+    private void checkCollectionIsEmpty() throws Exception {
+        if (logCollectionList.isEmpty()) {
+            throw new Exception("Insira/Remove ao menos um elemento para gerar o log!");
+        }
+    }
+    
+    public static void checkLogHasBeenInstantiated() throws Exception {
+        if (log == null) {
+            throw new Exception("Por favor, configure um log primeiro!");
+        }
     }
 
     public LogsView getView() {

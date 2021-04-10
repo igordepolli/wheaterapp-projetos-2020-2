@@ -26,6 +26,7 @@ public class WeatherDataInputPresenter {
         if (instance == null) {
             instance = new WeatherDataInputPresenter();
         }
+        
         return instance;
     }
 
@@ -34,6 +35,7 @@ public class WeatherDataInputPresenter {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
+                    checkFieldsIsEmpty();
                     addWeatherData();
                     JOptionPane.showMessageDialog(view, "Dados de tempo inseridos com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
                 } catch (Exception ex) {
@@ -54,16 +56,7 @@ public class WeatherDataInputPresenter {
 
     private void addWeatherData() throws Exception {
         LogsPresenter logPresenter = LogsPresenter.getInstance();
-        Log log = LogsPresenter.getInstanceLog();
-        
-        if (log == null) {
-            throw new Exception("Por favor, configure um log primeiro!");
-        }
-        
-        if (checkFieldsIsEmpty()) {
-            throw new Exception("TODOS os campos devem ser preenchidos!");
-        }
-        
+
         WeatherDataCollection weatherDataCollection = WeatherDataCollection.getInstance();
         WeatherData weatherData = new WeatherData();
 
@@ -71,9 +64,9 @@ public class WeatherDataInputPresenter {
         weatherData.setHumidity(Double.parseDouble(view.getTfHumidity().getText()));
         weatherData.setPressure(Double.parseDouble(view.getTfPressure().getText()));
         weatherData.setTemperature(Double.parseDouble(view.getTfTemperature().getText()));
-        
+
         weatherDataCollection.addWeatherData(weatherData);
-        logPresenter.addElementInLog(weatherData, "Included");
+        logPresenter.addElementInLog(weatherData, "Incluído");
     }
 
     private void cleanFields() {
@@ -82,12 +75,20 @@ public class WeatherDataInputPresenter {
         view.getTfPressure().setText("");
         view.getTfTemperature().setText("");
     }
-    
-    private boolean checkFieldsIsEmpty() {
+
+    private boolean fieldsIsEmpty() {
         return view.getTfDate().getText().replaceAll("\\s", "").equals("")
-                && view.getTfHumidity().getText().equals("") 
+                && view.getTfHumidity().getText().equals("")
                 && view.getTfPressure().getText().equals("")
                 && view.getTfTemperature().getText().equals("");
+    }
+
+    private boolean checkFieldsIsEmpty() throws Exception {
+        if (fieldsIsEmpty()) {
+            throw new Exception("TODOS os campos devem ser preenchidos!");
+        }
+
+        return false;
     }
 
     public WeatherDataInputView getView() {

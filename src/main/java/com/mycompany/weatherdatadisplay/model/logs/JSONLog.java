@@ -11,7 +11,7 @@ import org.json.simple.JSONObject;
 public class JSONLog extends Log {
 
     private FileWriter file;
-    
+
     public JSONLog(List<LogCollection> logCollectionList) {
         this.logCollectionList = logCollectionList;
     }
@@ -19,11 +19,12 @@ public class JSONLog extends Log {
     @Override
     public void write() throws Exception {
         generateJSONFile();
-        fillJSON();
+        fillAndWriteJSON();
         closeFile();
     }
 
-    public void fillJSON() throws Exception {
+    @SuppressWarnings("unchecked")
+    private void fillAndWriteJSON() throws Exception {
         for (LogCollection log : logCollectionList) {
             JSONObject obj = new JSONObject();
             obj.put("Humidade", log.getWeatherData().getHumidity());
@@ -31,15 +32,15 @@ public class JSONLog extends Log {
             obj.put("Ação", log.getAction());
             obj.put("Pressão", log.getWeatherData().getPressure());
             obj.put("Data", DateUtil.dateToString(log.getWeatherData().getCustomDate().getDate()));
-            file.write(obj.toJSONString());
+            file.write("Elemento: " + obj.toJSONString());
             file.write("\n");
         }
     }
-    
+
     private void generateJSONFile() throws IOException {
         file = new FileWriter("jsonlog.json");
     }
-    
+
     private void closeFile() throws Exception {
         file.flush();
         file.close();
