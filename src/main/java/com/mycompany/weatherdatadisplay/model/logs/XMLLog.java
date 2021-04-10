@@ -11,7 +11,7 @@ public class XMLLog extends Log {
     }
     
     @Override
-    public void write() {
+    public void write() throws Exception {
         for (LogCollection log : logCollectionList) {
             System.out.println("XML: " + log.getWeatherData() + log.getAction());
         }

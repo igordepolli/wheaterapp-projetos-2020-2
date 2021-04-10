@@ -6,6 +6,6 @@ public abstract class Log {
     
     protected List<LogCollection> logCollectionList;
    
-    public abstract void write();
+    public abstract void write() throws Exception;
 
 }

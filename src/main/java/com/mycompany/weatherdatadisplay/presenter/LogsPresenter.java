@@ -12,6 +12,9 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class LogsPresenter {
 
@@ -46,7 +49,12 @@ public class LogsPresenter {
         view.getBtSave().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                log.write();
+                try {
+                    log.write();
+                    JOptionPane.showMessageDialog(view, "Log gerado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(view, "Erro ao salvar o arquivo!", "Erro", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
     }

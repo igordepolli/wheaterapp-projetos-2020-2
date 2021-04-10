@@ -49,11 +49,6 @@ public class WeatherData {
     }
 
     @Override
-    public String toString() {
-        return "WeatherData{" + "date=" + DateUtil.dateToString(customDate.getDate()) + ", temperature=" + temperature + ", humidity=" + humidity + ", pressure=" + pressure + '}';
-    }
-
-    @Override
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
