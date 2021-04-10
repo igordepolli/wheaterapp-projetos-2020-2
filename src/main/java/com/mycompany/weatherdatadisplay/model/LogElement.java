@@ -1,11 +1,11 @@
 package com.mycompany.weatherdatadisplay.model;
 
-public class LogCollection {
+public class LogElement {
     
     private String action;
     private WeatherData weatherData;
     
-    public LogCollection() {
+    public LogElement() {
     }
     
     public String getAction() {

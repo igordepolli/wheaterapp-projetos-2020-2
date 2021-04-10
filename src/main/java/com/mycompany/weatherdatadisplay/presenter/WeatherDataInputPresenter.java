@@ -1,6 +1,7 @@
 package com.mycompany.weatherdatadisplay.presenter;
 
-import com.mycompany.weatherdatadisplay.model.Log;
+import com.mycompany.weatherdatadisplay.model.LogElement;
+import com.mycompany.weatherdatadisplay.model.LogElementCollection;
 import com.mycompany.weatherdatadisplay.model.WeatherData;
 import com.mycompany.weatherdatadisplay.model.WeatherDataCollection;
 import com.mycompany.weatherdatadisplay.utils.DateUtil;
@@ -14,19 +15,23 @@ public class WeatherDataInputPresenter {
 
     private static WeatherDataInputPresenter instance = null;
     private final WeatherDataInputView view;
+    private final WeatherDataCollection collectionWeatherData;
+    private final LogElementCollection logElements;
 
-    private WeatherDataInputPresenter() {
+    private WeatherDataInputPresenter(WeatherDataCollection collectionWeatherData, LogElementCollection logElements) {
         view = new WeatherDataInputView();
         view.setLocation(20, 20);
         view.setVisible(true);
+        this.collectionWeatherData = collectionWeatherData;
+        this.logElements = logElements;
         initListeners();
     }
 
-    public static WeatherDataInputPresenter getInstance() {
+    public static WeatherDataInputPresenter getInstance(WeatherDataCollection collectionWeatherData, LogElementCollection logElements) {
         if (instance == null) {
-            instance = new WeatherDataInputPresenter();
+            instance = new WeatherDataInputPresenter(collectionWeatherData, logElements);
         }
-        
+
         return instance;
     }
 
@@ -55,18 +60,17 @@ public class WeatherDataInputPresenter {
     }
 
     private void addWeatherData() throws Exception {
-        LogsPresenter logPresenter = LogsPresenter.getInstance();
-
-        WeatherDataCollection weatherDataCollection = WeatherDataCollection.getInstance();
         WeatherData weatherData = new WeatherData();
-
         weatherData.setCustomDate(DateUtil.stringToDate(view.getTfDate().getText()));
         weatherData.setHumidity(Double.parseDouble(view.getTfHumidity().getText()));
         weatherData.setPressure(Double.parseDouble(view.getTfPressure().getText()));
         weatherData.setTemperature(Double.parseDouble(view.getTfTemperature().getText()));
+        collectionWeatherData.addWeatherData(weatherData);
 
-        weatherDataCollection.addWeatherData(weatherData);
-        logPresenter.addElementInLog(weatherData, "Incluído");
+        LogElement logElement = new LogElement();
+        logElement.setAction("Incluído");
+        logElement.setWeatherData(weatherData);
+        logElements.addLogElement(logElement);
     }
 
     private void cleanFields() {

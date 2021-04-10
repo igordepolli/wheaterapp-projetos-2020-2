@@ -1,8 +1,7 @@
 package com.mycompany.weatherdatadisplay.presenter;
 
 import com.mycompany.weatherdatadisplay.model.Log;
-import com.mycompany.weatherdatadisplay.model.LogCollection;
-import com.mycompany.weatherdatadisplay.model.WeatherData;
+import com.mycompany.weatherdatadisplay.model.LogElementCollection;
 import com.mycompany.weatherdatadisplay.model.logs.JSONLog;
 import com.mycompany.weatherdatadisplay.model.logs.XMLLog;
 import com.mycompany.weatherdatadisplay.view.LogsView;
@@ -10,28 +9,26 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JOptionPane;
 
 public class LogsPresenter {
 
     private static LogsPresenter instance = null;
-    protected List<LogCollection> logCollectionList;
+    private final LogElementCollection logElements;
     private final LogsView view;
     private static Log log;
 
-    private LogsPresenter() {
+    private LogsPresenter(LogElementCollection logElements) {
         view = new LogsView();
         view.setLocation(950, 20);
         view.setVisible(true);
-        logCollectionList = new ArrayList<>();
+        this.logElements = logElements;
         initListeners();
     }
 
-    public static LogsPresenter getInstance() {
+    public static LogsPresenter getInstance(LogElementCollection logElements) {
         if (instance == null) {
-            instance = new LogsPresenter();
+            instance = new LogsPresenter(logElements);
         }
         return instance;
     }
@@ -63,31 +60,17 @@ public class LogsPresenter {
 
         switch (indexItem) {
             case 0:
-                log = new JSONLog(logCollectionList);
+                log = new JSONLog(logElements);
                 break;
             case 1:
-                log = new XMLLog(logCollectionList);
+                log = new XMLLog(logElements);
                 break;
         }
     }
-    
-    public final void addElementInLog(WeatherData weatherData, String action) {
-        LogCollection logCollection = new LogCollection();
-        logCollection.setWeatherData(weatherData);
-        logCollection.setAction(action);
-        
-        logCollectionList.add(logCollection);
-    }
-    
+
     private void checkCollectionIsEmpty() throws Exception {
-        if (logCollectionList.isEmpty()) {
+        if (logElements.logElementsIsEmpty()) {
             throw new Exception("Insira/Remove ao menos um elemento para gerar o log!");
-        }
-    }
-    
-    public static void checkLogHasBeenInstantiated() throws Exception {
-        if (log == null) {
-            throw new Exception("Por favor, configure um log primeiro!");
         }
     }
 

@@ -1,19 +1,19 @@
 package com.mycompany.weatherdatadisplay.model.logs;
 
 import com.mycompany.weatherdatadisplay.model.Log;
-import com.mycompany.weatherdatadisplay.model.LogCollection;
+import com.mycompany.weatherdatadisplay.model.LogElement;
+import com.mycompany.weatherdatadisplay.model.LogElementCollection;
 import com.mycompany.weatherdatadisplay.utils.DateUtil;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.List;
 import org.json.simple.JSONObject;
 
 public class JSONLog extends Log {
 
     private FileWriter file;
 
-    public JSONLog(List<LogCollection> logCollectionList) {
-        this.logCollectionList = logCollectionList;
+    public JSONLog(LogElementCollection logElements) {
+        this.logElements = logElements;
     }
 
     @Override
@@ -25,7 +25,7 @@ public class JSONLog extends Log {
 
     @SuppressWarnings("unchecked")
     private void fillAndWriteJSON() throws Exception {
-        for (LogCollection log : logCollectionList) {
+        for (LogElement log : logElements.getLogElements()) {
             JSONObject obj = new JSONObject();
             obj.put("Humidade", log.getWeatherData().getHumidity());
             obj.put("Temperatura", log.getWeatherData().getTemperature());

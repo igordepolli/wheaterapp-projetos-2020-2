@@ -1,7 +1,8 @@
 package com.mycompany.weatherdatadisplay.presenter;
 
 import com.mycompany.weatherdatadisplay.interfaces.IObserver;
-import com.mycompany.weatherdatadisplay.model.Log;
+import com.mycompany.weatherdatadisplay.model.LogElement;
+import com.mycompany.weatherdatadisplay.model.LogElementCollection;
 import com.mycompany.weatherdatadisplay.model.WeatherData;
 import com.mycompany.weatherdatadisplay.model.WeatherDataCollection;
 import com.mycompany.weatherdatadisplay.utils.DateUtil;
@@ -20,19 +21,21 @@ public class RecordsPresenter implements IObserver {
     private final RecordsView view;
     private DefaultTableModel tbWeatherDatas;
     private final WeatherDataCollection collectionWeatherData;
+    private final LogElementCollection logElements;
 
-    private RecordsPresenter() {
+    private RecordsPresenter(WeatherDataCollection collectionWeatherData, LogElementCollection logElements) {
         view = new RecordsView();
-        collectionWeatherData = WeatherDataCollection.getInstance();
+        this.collectionWeatherData = collectionWeatherData;
+        this.logElements = logElements;
         view.setLocation(440, 260);
         view.setVisible(true);
         constructTableModel();
         initListeners();
     }
 
-    public static RecordsPresenter getInstance() {
+    public static RecordsPresenter getInstance(WeatherDataCollection collectionWeatherData, LogElementCollection logElements) {
         if (instance == null) {
-            instance = new RecordsPresenter();
+            instance = new RecordsPresenter(collectionWeatherData, logElements);
         }
         return instance;
     }
@@ -64,13 +67,15 @@ public class RecordsPresenter implements IObserver {
     }
 
     private void removeItemList() throws Exception {
-        LogsPresenter logPresenter = LogsPresenter.getInstance();
-        
+
         List<WeatherData> auxList = new ArrayList<>(collectionWeatherData.getWeathers());
         for (int i = 0; i < auxList.size(); i++) {
             if (view.getTbRecords().getSelectedRow() == i) {
                 collectionWeatherData.removeWeatherData(auxList.get(i));
-                logPresenter.addElementInLog(auxList.get(i), "Removido");
+                LogElement logElement = new LogElement();
+                logElement.setAction("Removido");
+                logElement.setWeatherData(auxList.get(i));
+                logElements.addLogElement(logElement);
             }
         }
     }
@@ -82,12 +87,12 @@ public class RecordsPresenter implements IObserver {
             }
         }
     }
-    
+
     private boolean checkCollectionIsEmpty() throws Exception {
-        if (collectionWeatherData.getWeathers().isEmpty()) {
+        if (collectionWeatherData.weathersIsEmpty()) {
             throw new Exception("Não é possível remover de uma lista vazia!");
         }
-        
+
         return false;
     }
 

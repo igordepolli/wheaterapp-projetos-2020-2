@@ -1,7 +1,6 @@
 package com.mycompany.weatherdatadisplay.model;
 
 import com.mycompany.weatherdatadisplay.model.average.CustomDate;
-import com.mycompany.weatherdatadisplay.utils.DateUtil;
 import java.util.Date;
 import java.util.Objects;
 

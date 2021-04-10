@@ -1,10 +1,8 @@
 package com.mycompany.weatherdatadisplay.model;
 
-import java.util.List;
-
 public abstract class Log {
     
-    protected List<LogCollection> logCollectionList;
+    protected LogElementCollection logElements;
    
     public abstract void write() throws Exception;
 

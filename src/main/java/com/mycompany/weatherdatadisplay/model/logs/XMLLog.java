@@ -1,7 +1,8 @@
 package com.mycompany.weatherdatadisplay.model.logs;
 
 import com.mycompany.weatherdatadisplay.model.Log;
-import com.mycompany.weatherdatadisplay.model.LogCollection;
+import com.mycompany.weatherdatadisplay.model.LogElement;
+import com.mycompany.weatherdatadisplay.model.LogElementCollection;
 import com.mycompany.weatherdatadisplay.utils.DateUtil;
 import java.io.File;
 import java.util.List;
@@ -22,8 +23,8 @@ public class XMLLog extends Log {
     private Document document;
     private File file;
 
-    public XMLLog(List<LogCollection> logCollectionList) {
-        this.logCollectionList = logCollectionList;
+    public XMLLog(LogElementCollection logElements) {
+        this.logElements = logElements;
     }
 
     @Override
@@ -42,7 +43,7 @@ public class XMLLog extends Log {
         document.appendChild(weatherDataDisplay);
     }
 
-    private void putLogCollection(LogCollection logCollection) throws Exception {
+    private void putLogCollection(LogElement logCollection) throws Exception {
         Node weatherDataDisplay = document.getFirstChild();
 
         Element element = document.createElement("Elemento");
@@ -70,7 +71,7 @@ public class XMLLog extends Log {
     }
 
     private void fillDocument() throws Exception {
-        for (LogCollection logCollection : logCollectionList) {
+        for (LogElement logCollection : logElements.getLogElements()) {
             putLogCollection(logCollection);
         }
     }
