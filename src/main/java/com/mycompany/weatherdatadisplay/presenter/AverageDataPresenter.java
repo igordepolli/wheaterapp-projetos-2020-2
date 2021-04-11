@@ -5,6 +5,7 @@ import com.mycompany.weatherdatadisplay.model.average.Averaging;
 import com.mycompany.weatherdatadisplay.model.average.Daily;
 import com.mycompany.weatherdatadisplay.model.average.Monthly;
 import com.mycompany.weatherdatadisplay.model.WeatherData;
+import com.mycompany.weatherdatadisplay.model.WeatherDataCollection;
 import com.mycompany.weatherdatadisplay.model.average.Weekly;
 import com.mycompany.weatherdatadisplay.view.AverageDataView;
 
@@ -16,19 +17,21 @@ public class AverageDataPresenter implements IObserver {
 
     private static AverageDataPresenter instance = null;
     private final AverageDataView view;
+    private final WeatherDataCollection weatherDataCollection;
     private Averaging selectedItem;
 
-    private AverageDataPresenter() {
+    private AverageDataPresenter(WeatherDataCollection weatherDataCollection) {
         view = new AverageDataView();
         view.setLocation(440, 20);
         view.setVisible(true);
+        this.weatherDataCollection = weatherDataCollection;
         defineInstanceOfSelectedItem();
         initListeners();
     }
 
-    public static AverageDataPresenter getInstance() {
+    public static AverageDataPresenter getInstance(WeatherDataCollection weatherDataCollection) {
         if (instance == null) {
-            instance = new AverageDataPresenter();
+            instance = new AverageDataPresenter(weatherDataCollection);
         }
         return instance;
     }
@@ -48,13 +51,13 @@ public class AverageDataPresenter implements IObserver {
 
         switch (indexItem) {
             case 0:
-                selectedItem = new Daily();
+                selectedItem = new Daily(weatherDataCollection);
                 break;
             case 1:
-                selectedItem = new Weekly();
+                selectedItem = new Weekly(weatherDataCollection);
                 break;
             case 2:
-                selectedItem = new Monthly();
+                selectedItem = new Monthly(weatherDataCollection);
                 break;
         }
     }

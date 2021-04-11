@@ -9,6 +9,8 @@ import java.util.stream.Collectors;
 
 public abstract class Averaging {
 
+    protected WeatherDataCollection weatherDataCollection;
+
     public abstract List<List<List<WeatherData>>> modifyCollection();
 
     public abstract Double getAverageTemperature();
@@ -18,71 +20,82 @@ public abstract class Averaging {
     public abstract Double getAveragePressure();
 
     protected final List<List<WeatherData>> weatherListGroupedByYear() {
-        WeatherDataCollection weatherDataCollection = WeatherDataCollection.getInstance();
         Map<Integer, List<WeatherData>> weatherListGrouped = weatherDataCollection.getWeathers().stream().collect(Collectors.groupingBy(w -> w.getCustomDate().getYear()));
         List<List<WeatherData>> newList = new ArrayList<>(weatherListGrouped.values());
 
         return newList;
     }
 
-    protected final Double temperatureAverage(List<List<List<WeatherData>>> listYear) {
+    protected final Double temperatureAverage(List<List<List<WeatherData>>> listWeatherDate) {
         Double sumAll = 0.0;
-        for (List<List<WeatherData>> listDate : listYear) {
-            Double sumYearly = 0.0;
-            Double averageYearly = 0.0;
-            for (List<WeatherData> listWeatherDate : listDate) {
-                Double sumDate = 0.0;
-                Double averageDate = 0.0;
-                for (WeatherData weatherData : listWeatherDate) {
-                    sumDate += weatherData.getTemperature();
-                }
-                averageDate = sumDate / listWeatherDate.size();
-                sumYearly += averageDate;
-            }
-            averageYearly = sumYearly / listDate.size();
-            sumAll += averageYearly;
+        for (List<List<WeatherData>> listWeatherDateAnnual : listWeatherDate) {
+            sumAll += annualAverageTemperature(listWeatherDateAnnual);
         }
-        return sumAll / listYear.size();
+        return sumAll / listWeatherDate.size();
     }
 
-    protected final Double humidityAverage(List<List<List<WeatherData>>> listYear) {
-        Double sumAll = 0.0;
-        for (List<List<WeatherData>> listDate : listYear) {
-            Double sumYearly = 0.0;
-            Double averageYearly = 0.0;
-            for (List<WeatherData> listWeatherDate : listDate) {
-                Double sumDate = 0.0;
-                Double averageDate = 0.0;
-                for (WeatherData weatherData : listWeatherDate) {
-                    sumDate += weatherData.getHumidity();
-                }
-                averageDate = sumDate / listWeatherDate.size();
-                sumYearly += averageDate;
-            }
-            averageYearly = sumYearly / listDate.size();
-            sumAll += averageYearly;
+    private final Double annualAverageTemperature(List<List<WeatherData>> listWeatherDateAnnual) {
+        Double sumYearly = 0.0;
+        for (List<WeatherData> listWeatherDate : listWeatherDateAnnual) {
+            sumYearly += courseAverageTemperature(listWeatherDate);
         }
-        return sumAll / listYear.size();
+        return sumYearly / listWeatherDateAnnual.size();
     }
 
-    protected final Double pressureAverage(List<List<List<WeatherData>>> listYear) {
-        Double sumAll = 0.0;
-        for (List<List<WeatherData>> listDate : listYear) {
-            Double sumYearly = 0.0;
-            Double averageYearly = 0.0;
-            for (List<WeatherData> listWeatherDate : listDate) {
-                Double sumDate = 0.0;
-                Double averageDate = 0.0;
-                for (WeatherData weatherData : listWeatherDate) {
-                    sumDate += weatherData.getPressure();
-                }
-                averageDate = sumDate / listWeatherDate.size();
-                sumYearly += averageDate;
-            }
-            averageYearly = sumYearly / listDate.size();
-            sumAll += averageYearly;
+    private final Double courseAverageTemperature(List<WeatherData> listWeatherDateCourse) {
+        Double sumCourse = 0.0;
+        for (WeatherData weatherData : listWeatherDateCourse) {
+            sumCourse += weatherData.getTemperature();
         }
-        return sumAll / listYear.size();
+        return sumCourse / listWeatherDateCourse.size();
+    }
+    
+    protected final Double humidityAverage(List<List<List<WeatherData>>> listWeatherDate) {
+        Double sumAll = 0.0;
+        for (List<List<WeatherData>> listWeatherDateAnnual : listWeatherDate) {
+            sumAll += annualAverageHumidity(listWeatherDateAnnual);
+        }
+        return sumAll / listWeatherDate.size();
+    }
+
+    private final Double annualAverageHumidity(List<List<WeatherData>> listWeatherDateAnnual) {
+        Double sumYearly = 0.0;
+        for (List<WeatherData> listWeatherDate : listWeatherDateAnnual) {
+            sumYearly += courseAverageHumidity(listWeatherDate);
+        }
+        return sumYearly / listWeatherDateAnnual.size();
+    }
+
+    private final Double courseAverageHumidity(List<WeatherData> listWeatherDateCourse) {
+        Double sumCourse = 0.0;
+        for (WeatherData weatherData : listWeatherDateCourse) {
+            sumCourse += weatherData.getHumidity();
+        }
+        return sumCourse / listWeatherDateCourse.size();
+    }
+    
+    protected final Double pressureAverage(List<List<List<WeatherData>>> listWeatherDate) {
+        Double sumAll = 0.0;
+        for (List<List<WeatherData>> listWeatherDateAnnual : listWeatherDate) {
+            sumAll += annualAveragePressure(listWeatherDateAnnual);
+        }
+        return sumAll / listWeatherDate.size();
+    }
+
+    private final Double annualAveragePressure(List<List<WeatherData>> listWeatherDateAnnual) {
+        Double sumYearly = 0.0;
+        for (List<WeatherData> listWeatherDate : listWeatherDateAnnual) {
+            sumYearly += courseAveragePressure(listWeatherDate);
+        }
+        return sumYearly / listWeatherDateAnnual.size();
+    }
+
+    private final Double courseAveragePressure(List<WeatherData> listWeatherDateCourse) {
+        Double sumCourse = 0.0;
+        for (WeatherData weatherData : listWeatherDateCourse) {
+            sumCourse += weatherData.getPressure();
+        }
+        return sumCourse / listWeatherDateCourse.size();
     }
 
 }

@@ -32,7 +32,7 @@ public class LastWeatherDatePresenter implements IObserver {
     }
 
     @Override
-    public void update(List<WeatherData> weathers) {
+    public void update(List<WeatherData> weathers) {        
         if (weathers.isEmpty()) {
             restartLabels();
         } else {

@@ -55,7 +55,7 @@ public class MainScreenPresenter {
 
     private void fillInternalsFrames() {
         WeatherDataInputPresenter display_1 = WeatherDataInputPresenter.getInstance(collectionWeatherData, logElements);
-        AverageDataPresenter display_2 = AverageDataPresenter.getInstance();
+        AverageDataPresenter display_2 = AverageDataPresenter.getInstance(collectionWeatherData);
         LastWeatherDatePresenter display_3 = LastWeatherDatePresenter.getInstance();
         RecordsPresenter display_4 = RecordsPresenter.getInstance(collectionWeatherData, logElements);
 
@@ -63,7 +63,7 @@ public class MainScreenPresenter {
     }
 
     private void registerAllObservers() {
-        AverageDataPresenter observer_1 = AverageDataPresenter.getInstance();
+        AverageDataPresenter observer_1 = AverageDataPresenter.getInstance(collectionWeatherData);
         LastWeatherDatePresenter observer_2 = LastWeatherDatePresenter.getInstance();
         RecordsPresenter observer_3 = RecordsPresenter.getInstance(collectionWeatherData, logElements);
 
