@@ -49,7 +49,7 @@ public abstract class Averaging {
         }
         return sumCourse / listWeatherDateCourse.size();
     }
-    
+
     protected final Double humidityAverage(List<List<List<WeatherData>>> listWeatherDate) {
         Double sumAll = 0.0;
         for (List<List<WeatherData>> listWeatherDateAnnual : listWeatherDate) {
@@ -73,7 +73,7 @@ public abstract class Averaging {
         }
         return sumCourse / listWeatherDateCourse.size();
     }
-    
+
     protected final Double pressureAverage(List<List<List<WeatherData>>> listWeatherDate) {
         Double sumAll = 0.0;
         for (List<List<WeatherData>> listWeatherDateAnnual : listWeatherDate) {

@@ -1,6 +1,5 @@
 package com.mycompany.weatherdatadisplay.model.logs;
 
-import com.mycompany.weatherdatadisplay.model.logs.LogElement;
 import java.util.ArrayList;
 import java.util.List;
 

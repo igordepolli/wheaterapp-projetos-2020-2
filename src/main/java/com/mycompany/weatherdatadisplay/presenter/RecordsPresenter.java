@@ -97,7 +97,7 @@ public class RecordsPresenter implements IObserver {
     @Override
     public void update(List<WeatherData> weathers) {
         clearTable();
-        
+
         for (WeatherData weatherData : weathers) {
             tbWeatherDatas.addRow(new Object[]{
                 DateUtil.dateToString(weatherData.getCustomDate().getDate()),
