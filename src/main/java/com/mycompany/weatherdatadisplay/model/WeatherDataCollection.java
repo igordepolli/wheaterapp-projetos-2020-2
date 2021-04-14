@@ -1,14 +1,12 @@
 package com.mycompany.weatherdatadisplay.model;
 
-import com.mycompany.weatherdatadisplay.interfaces.ISubject;
 import com.mycompany.weatherdatadisplay.interfaces.IObserver;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class WeatherDataCollection implements ISubject {
+public class WeatherDataCollection extends Subject {
 
     private static WeatherDataCollection instance = null;
-    private final ArrayList<IObserver> observers;
     private final ArrayList<WeatherData> weathers;
 
     private WeatherDataCollection() {
@@ -38,20 +36,7 @@ public class WeatherDataCollection implements ISubject {
     }
 
     @Override
-    public void registerObserver(IObserver observer) {
-        observers.add(observer);
-    }
-
-    @Override
-    public void removeObserver(IObserver observer) {
-        int i = observers.indexOf(observer);
-        if (i >= 0) {
-            observers.remove(observer);
-        }
-    }
-
-    @Override
-    public void notifyObservers() {
+    protected void notifyObservers() {
         observers.forEach(observer -> {
             observer.update(Collections.unmodifiableList(weathers));
         });
