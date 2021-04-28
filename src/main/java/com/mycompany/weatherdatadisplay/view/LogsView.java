@@ -39,7 +39,6 @@ public class LogsView extends javax.swing.JInternalFrame {
         jLabel14.setText("Log");
 
         cbLog.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "JSON", "XML" }));
-        cbLog.setSelectedIndex(-1);
 
         btSave.setText("Salvar");
 

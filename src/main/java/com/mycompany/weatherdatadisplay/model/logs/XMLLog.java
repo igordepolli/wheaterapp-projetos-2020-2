@@ -14,22 +14,21 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
-public class XMLLog extends Log {
+public class XMLLog implements ILog {
 
     private Document document;
 
-    public XMLLog(LogElementCollection logElements) {
-        this.logElements = logElements;
+    public XMLLog() throws Exception {
+        createFile();
     }
 
     @Override
-    public void write() throws Exception {
-        createDocument();
-        fillDocument();
-        saveDocument();
+    public void write(LogElement logElement) throws Exception {
+        createAppends(logElement);
+        writeDocument();
     }
 
-    private void createDocument() throws Exception {
+    private void createFile() throws Exception {
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
 
@@ -38,37 +37,31 @@ public class XMLLog extends Log {
         document.appendChild(weatherDataDisplay);
     }
 
-    private void putLogCollection(LogElement logCollection) throws Exception {
+    private void createAppends(LogElement logElement) throws Exception {
         Node weatherDataDisplay = document.getFirstChild();
 
         Element element = document.createElement("Elemento");
         weatherDataDisplay.appendChild(element);
 
         Attr action = document.createAttribute("Ação");
-        action.setValue(logCollection.getAction());
+        action.setValue(logElement.getAction());
         element.setAttributeNode(action);
 
         Attr date = document.createAttribute("Data");
-        date.setValue(DateUtil.dateToString(logCollection.getWeatherData().getCustomDate().getDate()));
+        date.setValue(DateUtil.dateToString(logElement.getWeatherData().getRegistrationDate().getDate()));
         element.setAttributeNode(date);
 
         Attr temperature = document.createAttribute("Temperatura");
-        temperature.setValue(logCollection.getWeatherData().getTemperature().toString() + "º C");
+        temperature.setValue(logElement.getWeatherData().getTemperature().toString() + "º C");
         element.setAttributeNode(temperature);
 
         Attr humidity = document.createAttribute("Humidade");
-        humidity.setValue(logCollection.getWeatherData().getHumidity().toString() + "%");
+        humidity.setValue(logElement.getWeatherData().getHumidity().toString() + "%");
         element.setAttributeNode(humidity);
 
         Attr pressure = document.createAttribute("Pressão");
-        pressure.setValue(logCollection.getWeatherData().getPressure().toString() + " mb");
+        pressure.setValue(logElement.getWeatherData().getPressure().toString() + " mb");
         element.setAttributeNode(pressure);
-    }
-
-    private void fillDocument() throws Exception {
-        for (LogElement logCollection : logElements.getLogElements()) {
-            putLogCollection(logCollection);
-        }
     }
 
     private void writeDocument() throws Exception {
@@ -85,8 +78,5 @@ public class XMLLog extends Log {
 
         transformer.transform(source, result);
     }
-
-    private void saveDocument() throws Exception {
-        writeDocument();
-    }
+    
 }

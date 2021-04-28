@@ -1,7 +1,6 @@
 package com.mycompany.weatherdatadisplay.presenter;
 
 import com.mycompany.weatherdatadisplay.model.logs.LogElement;
-import com.mycompany.weatherdatadisplay.model.logs.LogElementCollection;
 import com.mycompany.weatherdatadisplay.model.WeatherData;
 import com.mycompany.weatherdatadisplay.model.WeatherDataCollection;
 import com.mycompany.weatherdatadisplay.utils.DateUtil;
@@ -10,26 +9,27 @@ import com.mycompany.weatherdatadisplay.view.WeatherDataInputView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+import com.mycompany.weatherdatadisplay.model.logs.ManagerLog;
 
 public class WeatherDataInputPresenter {
 
     private static WeatherDataInputPresenter instance = null;
     private final WeatherDataInputView view;
     private final WeatherDataCollection collectionWeatherData;
-    private final LogElementCollection logElements;
+    private final ManagerLog log;
 
-    private WeatherDataInputPresenter(WeatherDataCollection collectionWeatherData, LogElementCollection logElements) {
+    private WeatherDataInputPresenter(WeatherDataCollection collectionWeatherData, ManagerLog log) {
         view = new WeatherDataInputView();
         view.setLocation(20, 20);
         view.setVisible(true);
         this.collectionWeatherData = collectionWeatherData;
-        this.logElements = logElements;
+        this.log = log;
         initListeners();
     }
 
-    public static WeatherDataInputPresenter getInstance(WeatherDataCollection collectionWeatherData, LogElementCollection logElements) {
+    public static WeatherDataInputPresenter getInstance(WeatherDataCollection collectionWeatherData, ManagerLog log) {
         if (instance == null) {
-            instance = new WeatherDataInputPresenter(collectionWeatherData, logElements);
+            instance = new WeatherDataInputPresenter(collectionWeatherData, log);
         }
 
         return instance;
@@ -70,7 +70,7 @@ public class WeatherDataInputPresenter {
         LogElement logElement = new LogElement();
         logElement.setAction("Incluído");
         logElement.setWeatherData(weatherData);
-        logElements.addLogElement(logElement);
+        log.write(logElement);
     }
 
     private void cleanFields() {

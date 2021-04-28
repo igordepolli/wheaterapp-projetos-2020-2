@@ -2,45 +2,37 @@ package com.mycompany.weatherdatadisplay.model.logs;
 
 import com.mycompany.weatherdatadisplay.utils.DateUtil;
 import java.io.FileWriter;
-import java.io.IOException;
 import org.json.simple.JSONObject;
 
-public class JSONLog extends Log {
+public class JSONLog implements ILog {
 
     private FileWriter file;
 
-    public JSONLog(LogElementCollection logElements) {
-        this.logElements = logElements;
+    public JSONLog() throws Exception {
+        createFile();
     }
 
     @Override
-    public void write() throws Exception {
-        generateJSONFile();
-        fillAndWriteJSON();
-        closeFile();
+    public void write(LogElement logElement) throws Exception {
+        fillAndWriteJSON(logElement);
+        file.flush();
     }
 
     @SuppressWarnings("unchecked")
-    private void fillAndWriteJSON() throws Exception {
-        for (LogElement log : logElements.getLogElements()) {
-            JSONObject obj = new JSONObject();
-            obj.put("Humidade", log.getWeatherData().getHumidity() + "%");
-            obj.put("Temperatura", log.getWeatherData().getTemperature() + "º C");
-            obj.put("Ação", log.getAction());
-            obj.put("Pressão", log.getWeatherData().getPressure() + " mb");
-            obj.put("Data", DateUtil.dateToString(log.getWeatherData().getCustomDate().getDate()));
-            file.write("Elemento: " + obj.toJSONString());
-            file.write("\n");
-        }
+    private void fillAndWriteJSON(LogElement logElement) throws Exception {
+        JSONObject obj = new JSONObject();
+        obj.put("Humidade", logElement.getWeatherData().getHumidity() + "%");
+        obj.put("Temperatura", logElement.getWeatherData().getTemperature() + "º C");
+        obj.put("Ação", logElement.getAction());
+        obj.put("Pressão", logElement.getWeatherData().getPressure() + " mb");
+        obj.put("Data", DateUtil.dateToString(logElement.getWeatherData().getRegistrationDate().getDate()));
+        
+        file.write("Elemento: " + obj.toJSONString());
+        file.write("\n");
     }
-
-    private void generateJSONFile() throws IOException {
+    
+    private void createFile() throws Exception {
         file = new FileWriter("jsonlog.json");
-    }
-
-    private void closeFile() throws Exception {
-        file.flush();
-        file.close();
     }
 
 }

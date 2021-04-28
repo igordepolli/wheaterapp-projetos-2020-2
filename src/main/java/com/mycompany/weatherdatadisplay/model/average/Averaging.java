@@ -20,7 +20,7 @@ public abstract class Averaging {
     public abstract Double getAveragePressure();
 
     protected final List<List<WeatherData>> weatherListGroupedByYear() {
-        Map<Integer, List<WeatherData>> weatherListGrouped = weatherDataCollection.getWeathers().stream().collect(Collectors.groupingBy(w -> w.getCustomDate().getYear()));
+        Map<Integer, List<WeatherData>> weatherListGrouped = weatherDataCollection.getWeathers().stream().collect(Collectors.groupingBy(w -> w.getRegistrationDate().getYear()));
         List<List<WeatherData>> newList = new ArrayList<>(weatherListGrouped.values());
 
         return newList;
@@ -34,7 +34,7 @@ public abstract class Averaging {
         return sumAll / listWeatherDate.size();
     }
 
-    private final Double annualAverageTemperature(List<List<WeatherData>> listWeatherDateAnnual) {
+    private Double annualAverageTemperature(List<List<WeatherData>> listWeatherDateAnnual) {
         Double sumYearly = 0.0;
         for (List<WeatherData> listWeatherDate : listWeatherDateAnnual) {
             sumYearly += courseAverageTemperature(listWeatherDate);
@@ -42,7 +42,7 @@ public abstract class Averaging {
         return sumYearly / listWeatherDateAnnual.size();
     }
 
-    private final Double courseAverageTemperature(List<WeatherData> listWeatherDateCourse) {
+    private Double courseAverageTemperature(List<WeatherData> listWeatherDateCourse) {
         Double sumCourse = 0.0;
         for (WeatherData weatherData : listWeatherDateCourse) {
             sumCourse += weatherData.getTemperature();
@@ -58,7 +58,7 @@ public abstract class Averaging {
         return sumAll / listWeatherDate.size();
     }
 
-    private final Double annualAverageHumidity(List<List<WeatherData>> listWeatherDateAnnual) {
+    private Double annualAverageHumidity(List<List<WeatherData>> listWeatherDateAnnual) {
         Double sumYearly = 0.0;
         for (List<WeatherData> listWeatherDate : listWeatherDateAnnual) {
             sumYearly += courseAverageHumidity(listWeatherDate);
@@ -66,7 +66,7 @@ public abstract class Averaging {
         return sumYearly / listWeatherDateAnnual.size();
     }
 
-    private final Double courseAverageHumidity(List<WeatherData> listWeatherDateCourse) {
+    private Double courseAverageHumidity(List<WeatherData> listWeatherDateCourse) {
         Double sumCourse = 0.0;
         for (WeatherData weatherData : listWeatherDateCourse) {
             sumCourse += weatherData.getHumidity();
@@ -82,7 +82,7 @@ public abstract class Averaging {
         return sumAll / listWeatherDate.size();
     }
 
-    private final Double annualAveragePressure(List<List<WeatherData>> listWeatherDateAnnual) {
+    private Double annualAveragePressure(List<List<WeatherData>> listWeatherDateAnnual) {
         Double sumYearly = 0.0;
         for (List<WeatherData> listWeatherDate : listWeatherDateAnnual) {
             sumYearly += courseAveragePressure(listWeatherDate);
@@ -90,7 +90,7 @@ public abstract class Averaging {
         return sumYearly / listWeatherDateAnnual.size();
     }
 
-    private final Double courseAveragePressure(List<WeatherData> listWeatherDateCourse) {
+    private Double courseAveragePressure(List<WeatherData> listWeatherDateCourse) {
         Double sumCourse = 0.0;
         for (WeatherData weatherData : listWeatherDateCourse) {
             sumCourse += weatherData.getPressure();

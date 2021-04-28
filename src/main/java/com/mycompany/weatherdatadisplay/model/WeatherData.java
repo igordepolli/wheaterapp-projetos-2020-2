@@ -5,21 +5,21 @@ import java.util.Objects;
 
 public class WeatherData {
 
-    private final CustomDate customDate;
+    private final CustomDate registrationDate;
     private Double temperature;
     private Double humidity;
     private Double pressure;
 
     public WeatherData() {
-        customDate = new CustomDate();
+        registrationDate = new CustomDate();
     }
 
-    public CustomDate getCustomDate() {
-        return customDate;
+    public CustomDate getRegistrationDate() {
+        return registrationDate;
     }
 
     public void setCustomDate(Date date) {
-        this.customDate.setDate(date);
+        this.registrationDate.setDate(date);
     }
 
     public Double getTemperature() {
@@ -58,7 +58,7 @@ public class WeatherData {
             return false;
         }
         final WeatherData other = (WeatherData) obj;
-        if (!Objects.equals(this.customDate, other.customDate)) {
+        if (!Objects.equals(this.registrationDate, other.registrationDate)) {
             return false;
         }
         if (!Objects.equals(this.temperature, other.temperature)) {

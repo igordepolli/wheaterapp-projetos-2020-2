@@ -1,7 +1,8 @@
 package com.mycompany.weatherdatadisplay.presenter;
 
-import com.mycompany.weatherdatadisplay.model.logs.LogElementCollection;
 import com.mycompany.weatherdatadisplay.model.WeatherDataCollection;
+import com.mycompany.weatherdatadisplay.model.logs.JSONLog;
+import com.mycompany.weatherdatadisplay.model.logs.ManagerLog;
 import com.mycompany.weatherdatadisplay.view.MainScreenView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,13 +17,13 @@ public class MainScreenPresenter {
     private final MainScreenView view;
     private final List<JInternalFrame> internalsFrames;
     private final WeatherDataCollection collectionWeatherData;
-    private final LogElementCollection logElements;
+    private ManagerLog log;
 
-    private MainScreenPresenter() {
+    private MainScreenPresenter() throws Exception {
         view = new MainScreenView();
         collectionWeatherData = WeatherDataCollection.getInstance();
-        logElements = LogElementCollection.getInstance();
         internalsFrames = new ArrayList<>();
+        this.log = new ManagerLog(new JSONLog());
         view.setSize(1400, 600);
         registerAllObservers();
         fillInternalsFrames();
@@ -30,7 +31,7 @@ public class MainScreenPresenter {
         initListeners();
     }
 
-    public static MainScreenPresenter getInstance() {
+    public static MainScreenPresenter getInstance() throws Exception {
         if (instance == null) {
             instance = new MainScreenPresenter();
         }
@@ -41,7 +42,7 @@ public class MainScreenPresenter {
         view.getMiGenerateLog().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                LogsPresenter display_5 = LogsPresenter.getInstance(logElements);
+                LogsPresenter display_5 = LogsPresenter.getInstance(log);
                 view.add(display_5.getView());
             }
         });
@@ -54,10 +55,10 @@ public class MainScreenPresenter {
     }
 
     private void fillInternalsFrames() {
-        WeatherDataInputPresenter display_1 = WeatherDataInputPresenter.getInstance(collectionWeatherData, logElements);
+        WeatherDataInputPresenter display_1 = WeatherDataInputPresenter.getInstance(collectionWeatherData, log);
         AverageDataPresenter display_2 = AverageDataPresenter.getInstance(collectionWeatherData);
         LastWeatherDatePresenter display_3 = LastWeatherDatePresenter.getInstance();
-        RecordsPresenter display_4 = RecordsPresenter.getInstance(collectionWeatherData, logElements);
+        RecordsPresenter display_4 = RecordsPresenter.getInstance(collectionWeatherData, log);
 
         internalsFrames.addAll(Arrays.asList(display_1.getView(), display_2.getView(), display_3.getView(), display_4.getView()));
     }
@@ -65,7 +66,7 @@ public class MainScreenPresenter {
     private void registerAllObservers() {
         AverageDataPresenter observer_1 = AverageDataPresenter.getInstance(collectionWeatherData);
         LastWeatherDatePresenter observer_2 = LastWeatherDatePresenter.getInstance();
-        RecordsPresenter observer_3 = RecordsPresenter.getInstance(collectionWeatherData, logElements);
+        RecordsPresenter observer_3 = RecordsPresenter.getInstance(collectionWeatherData, log);
 
         collectionWeatherData.registerObserver(observer_1);
         collectionWeatherData.registerObserver(observer_2);

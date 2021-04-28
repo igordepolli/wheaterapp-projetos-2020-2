@@ -2,7 +2,6 @@ package com.mycompany.weatherdatadisplay.presenter;
 
 import com.mycompany.weatherdatadisplay.interfaces.IObserver;
 import com.mycompany.weatherdatadisplay.model.logs.LogElement;
-import com.mycompany.weatherdatadisplay.model.logs.LogElementCollection;
 import com.mycompany.weatherdatadisplay.model.WeatherData;
 import com.mycompany.weatherdatadisplay.model.WeatherDataCollection;
 import com.mycompany.weatherdatadisplay.utils.DateUtil;
@@ -14,6 +13,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
+import com.mycompany.weatherdatadisplay.model.logs.ManagerLog;
 
 public class RecordsPresenter implements IObserver {
 
@@ -21,21 +21,21 @@ public class RecordsPresenter implements IObserver {
     private final RecordsView view;
     private DefaultTableModel tbWeatherDatas;
     private final WeatherDataCollection collectionWeatherData;
-    private final LogElementCollection logElements;
+    private final ManagerLog log;
 
-    private RecordsPresenter(WeatherDataCollection collectionWeatherData, LogElementCollection logElements) {
+    private RecordsPresenter(WeatherDataCollection collectionWeatherData, ManagerLog log) {
         view = new RecordsView();
         this.collectionWeatherData = collectionWeatherData;
-        this.logElements = logElements;
+        this.log = log;
         view.setLocation(440, 260);
         view.setVisible(true);
         constructTableModel();
         initListeners();
     }
 
-    public static RecordsPresenter getInstance(WeatherDataCollection collectionWeatherData, LogElementCollection logElements) {
+    public static RecordsPresenter getInstance(WeatherDataCollection collectionWeatherData, ManagerLog log) {
         if (instance == null) {
-            instance = new RecordsPresenter(collectionWeatherData, logElements);
+            instance = new RecordsPresenter(collectionWeatherData, log);
         }
         return instance;
     }
@@ -75,7 +75,7 @@ public class RecordsPresenter implements IObserver {
                 LogElement logElement = new LogElement();
                 logElement.setAction("Removido");
                 logElement.setWeatherData(auxList.get(i));
-                logElements.addLogElement(logElement);
+                log.write(logElement);
             }
         }
     }
@@ -100,7 +100,7 @@ public class RecordsPresenter implements IObserver {
 
         for (WeatherData weatherData : weathers) {
             tbWeatherDatas.addRow(new Object[]{
-                DateUtil.dateToString(weatherData.getCustomDate().getDate()),
+                DateUtil.dateToString(weatherData.getRegistrationDate().getDate()),
                 weatherData.getTemperature() + "º C",
                 weatherData.getHumidity() + "%",
                 weatherData.getPressure() + " mb"

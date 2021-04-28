@@ -18,7 +18,7 @@ public class Weekly extends Averaging {
         List<List<List<WeatherData>>> listCourse = new ArrayList<>();
         List<List<WeatherData>> weatherListGroupedByYear = weatherListGroupedByYear();
         for (List<WeatherData> list : weatherListGroupedByYear) {
-            Map<Integer, List<WeatherData>> weatherListGroupedByDay = list.stream().collect(Collectors.groupingBy(w -> w.getCustomDate().getWeekOfYear()));
+            Map<Integer, List<WeatherData>> weatherListGroupedByDay = list.stream().collect(Collectors.groupingBy(w -> w.getRegistrationDate().getWeekOfYear()));
             List<List<WeatherData>> newList = new ArrayList<>(weatherListGroupedByDay.values());
             listCourse.add(newList);
         }
