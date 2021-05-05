@@ -1,7 +1,7 @@
 package com.mycompany.weatherdatadisplay.presenter;
 
 import com.mycompany.weatherdatadisplay.model.WeatherDataCollection;
-import com.mycompany.weatherdatadisplay.model.logs.JSONLog;
+import com.mycompany.weatherdatadisplay.model.logs.JsonLog;
 import com.mycompany.weatherdatadisplay.model.logs.ManagerLog;
 import com.mycompany.weatherdatadisplay.view.MainScreenView;
 import java.awt.event.ActionEvent;
@@ -17,13 +17,13 @@ public class MainScreenPresenter {
     private final MainScreenView view;
     private final List<JInternalFrame> internalsFrames;
     private final WeatherDataCollection collectionWeatherData;
-    private ManagerLog log;
+    private final ManagerLog log;
 
     private MainScreenPresenter() throws Exception {
         view = new MainScreenView();
         collectionWeatherData = WeatherDataCollection.getInstance();
         internalsFrames = new ArrayList<>();
-        this.log = new ManagerLog(new JSONLog());
+        this.log = new ManagerLog(new JsonLog());
         view.setSize(1400, 600);
         registerAllObservers();
         fillInternalsFrames();

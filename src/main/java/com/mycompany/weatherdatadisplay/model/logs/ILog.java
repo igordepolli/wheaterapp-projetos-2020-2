@@ -2,6 +2,6 @@ package com.mycompany.weatherdatadisplay.model.logs;
 
 public interface ILog {
       
-    public abstract void write(LogElement logElement) throws Exception;
+    public void write(LogElement logElement) throws Exception;
     
 }

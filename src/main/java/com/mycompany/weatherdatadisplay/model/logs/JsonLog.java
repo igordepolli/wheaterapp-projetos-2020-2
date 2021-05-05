@@ -4,11 +4,11 @@ import com.mycompany.weatherdatadisplay.utils.DateUtil;
 import java.io.FileWriter;
 import org.json.simple.JSONObject;
 
-public class JSONLog implements ILog {
-
+public class JsonLog implements ILog {
+    
     private FileWriter file;
 
-    public JSONLog() throws Exception {
+    public JsonLog() throws Exception {
         createFile();
     }
 

@@ -14,11 +14,11 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
-public class XMLLog implements ILog {
+public class XmlLog implements ILog {
 
     private Document document;
 
-    public XMLLog() throws Exception {
+    public XmlLog() throws Exception {
         createFile();
     }
 

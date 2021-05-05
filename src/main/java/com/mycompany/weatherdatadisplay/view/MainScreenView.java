@@ -5,7 +5,6 @@
  */
 package com.mycompany.weatherdatadisplay.view;
 
-import com.mycompany.weatherdatadisplay.presenter.LogsPresenter;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
@@ -74,5 +73,5 @@ public class MainScreenView extends javax.swing.JInternalFrame {
     public JMenuItem getMiGenerateLog() {
         return miGenerateLog;
     }
-
+    
 }

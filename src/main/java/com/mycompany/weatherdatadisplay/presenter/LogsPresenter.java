@@ -1,7 +1,7 @@
 package com.mycompany.weatherdatadisplay.presenter;
 
-import com.mycompany.weatherdatadisplay.model.logs.JSONLog;
-import com.mycompany.weatherdatadisplay.model.logs.XMLLog;
+import com.mycompany.weatherdatadisplay.model.logs.JsonLog;
+import com.mycompany.weatherdatadisplay.model.logs.XmlLog;
 import com.mycompany.weatherdatadisplay.view.LogsView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,7 +14,7 @@ public class LogsPresenter {
 
     private static LogsPresenter instance = null;
     private final LogsView view;
-    private ManagerLog log;
+    private final ManagerLog log;
 
     private LogsPresenter(ManagerLog log) {
         this.log = log;
@@ -61,10 +61,10 @@ public class LogsPresenter {
 
         switch (indexItem) {
             case 0:
-                log.setLog(new JSONLog());
+                log.setLog(new JsonLog());
                 break;
             case 1:
-                log.setLog(new XMLLog());
+                log.setLog(new XmlLog());
                 break;
         }
     }
