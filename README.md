@@ -4,7 +4,7 @@ Código atividade: AV002
 Nome atividade: Weather Data Display
 
 Equipe:
-    Igor Depoli
+    Igor Depolli
     Maycon Rodrigues
     Pedro Henrique Robadel
     Werikis Venancio Xavier
