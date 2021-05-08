@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
 
 public class MainScreenPresenter {
 
@@ -44,6 +45,17 @@ public class MainScreenPresenter {
             public void actionPerformed(ActionEvent e) {
                 LogsPresenter display_5 = LogsPresenter.getInstance(log);
                 view.add(display_5.getView());
+            }
+        });
+        
+        view.getMiGenerateChart().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                try {
+                    new ChartPresenter(collectionWeatherData);
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(view, ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
     }
