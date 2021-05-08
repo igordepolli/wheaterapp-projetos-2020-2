@@ -14,6 +14,11 @@
                 <Property name="text" type="java.lang.String" value="Gerar Log"/>
               </Properties>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="miGenerateChart">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Gerar Gr&#xe1;ficos"/>
+              </Properties>
+            </MenuItem>
           </SubComponents>
         </Menu>
       </SubComponents>

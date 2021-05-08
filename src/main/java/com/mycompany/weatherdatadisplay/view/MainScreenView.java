@@ -33,6 +33,7 @@ public class MainScreenView extends javax.swing.JInternalFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         mnConfigure = new javax.swing.JMenu();
         miGenerateLog = new javax.swing.JMenuItem();
+        miGenerateChart = new javax.swing.JMenuItem();
 
         setTitle("Weather Data Display");
 
@@ -40,6 +41,9 @@ public class MainScreenView extends javax.swing.JInternalFrame {
 
         miGenerateLog.setText("Gerar Log");
         mnConfigure.add(miGenerateLog);
+
+        miGenerateChart.setText("Gerar Gráficos");
+        mnConfigure.add(miGenerateChart);
 
         jMenuBar1.add(mnConfigure);
 
@@ -62,6 +66,7 @@ public class MainScreenView extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem miGenerateChart;
     private javax.swing.JMenuItem miGenerateLog;
     private javax.swing.JMenu mnConfigure;
     // End of variables declaration//GEN-END:variables
@@ -72,6 +77,10 @@ public class MainScreenView extends javax.swing.JInternalFrame {
 
     public JMenuItem getMiGenerateLog() {
         return miGenerateLog;
+    }
+    
+    public JMenuItem getMiGenerateChart() {
+        return miGenerateChart;
     }
     
 }
